@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Albatross.CodeAnalysis.Syntax {
 	/// <summary>
@@ -43,12 +44,18 @@ namespace Albatross.CodeAnalysis.Syntax {
 
 		public SyntaxNode Build(IEnumerable<SyntaxNode> elements) {
 			var statements = new List<StatementSyntax>();
+			var attributes = new List<AttributeSyntax>();
 			foreach (var element in elements) {
 				if (element is ParameterSyntax parameter) {
 					Node = Node.AddParameterListParameters(parameter);
+				} else if (element is AttributeSyntax attribute) {
+					attributes.Add(attribute);
 				} else {
 					statements.Add(new StatementNode(element).StatementSyntax);
 				}
+			}
+			if (attributes.Any()) {
+				Node = Node.WithAttributeLists(SyntaxFactory.List(attributes.Select(x => SyntaxFactory.AttributeList(SyntaxFactory.SingletonSeparatedList(x)))));
 			}
 			if (usedByInterface) {
 				Node = Node.WithSemicolonToken(SyntaxFactory.Token(SyntaxKind.SemicolonToken));

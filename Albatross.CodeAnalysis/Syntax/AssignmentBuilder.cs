@@ -37,7 +37,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 			}
 			if (nameParameters.Count == 0 || array.Length == 0) {
 				throw new ArgumentException($"Assignment operations expects at least two parameter of type ExpressionSyntax");
-			} else if (elements.Last() is ExpressionSyntax expressionSyntax) {
+			} else if (array.Last() is ExpressionSyntax expressionSyntax) {
 				var name = (ExpressionSyntax)new MemberAccessBuilder().Build(nameParameters);
 				return SyntaxFactory.AssignmentExpression(SyntaxKind.SimpleAssignmentExpression, name, expressionSyntax);
 			} else {

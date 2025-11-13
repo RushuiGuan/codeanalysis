@@ -7,12 +7,12 @@ using System.Text;
 namespace Albatross.CodeAnalysis.Syntax {
 	public class CodeStack {
 		public class Scope : IDisposable {
-			CodeStack parent;
+			readonly CodeStack parent;
 			public Scope(CodeStack parent) { this.parent = parent; }
 			public void Dispose() { parent.End(); }
 		}
 
-		Stack<INode> stack = new Stack<INode>();
+		readonly Stack<INode> stack = new Stack<INode>();
 		public string? FileName { get; set; }
 
 		public CodeStack Begin(INodeBuilder? builder = null) {

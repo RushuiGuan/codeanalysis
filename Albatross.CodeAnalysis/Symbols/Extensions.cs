@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
@@ -45,7 +46,7 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 		}
 
-		public static bool TryGetNullableValueType(this ITypeSymbol symbol, out ITypeSymbol? valueType) {
+		public static bool TryGetNullableValueType(this ITypeSymbol symbol, [NotNullWhen(true)] out ITypeSymbol? valueType) {
 			if (symbol is INamedTypeSymbol named && named.IsGenericType && named.OriginalDefinition.GetFullName() == My.GenericDefinition.Nullable) {
 				valueType = named.TypeArguments.Single();
 				return true;
@@ -134,7 +135,7 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 		}
 
-		public static bool TryGetCollectionElementType(this ITypeSymbol typeSymbol, out ITypeSymbol? elementType) {
+		public static bool TryGetCollectionElementType(this ITypeSymbol typeSymbol, [NotNullWhen(true)] out ITypeSymbol? elementType) {
 			if (typeSymbol.SpecialType == SpecialType.System_String) {
 				elementType = null;
 				return false;
@@ -196,8 +197,8 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 		}
 
-		public static bool IsConcreteClass(this INamedTypeSymbol symbol) => 
-			symbol.TypeKind == TypeKind.Class 
+		public static bool IsConcreteClass(this INamedTypeSymbol symbol) =>
+			symbol.TypeKind == TypeKind.Class
 			&& !symbol.IsAbstract
 			&& !symbol.IsStatic
 			&& !symbol.IsGenericTypeDefinition();

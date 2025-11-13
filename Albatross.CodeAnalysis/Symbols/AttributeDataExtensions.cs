@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Albatross.CodeAnalysis.Symbols {
@@ -17,7 +18,7 @@ namespace Albatross.CodeAnalysis.Symbols {
 			return false;
 		}
 
-		public static bool TryGetAttribute(this ISymbol symbol, string attributeName, out AttributeData? attributeData) {
+		public static bool TryGetAttribute(this ISymbol symbol, string attributeName, [NotNullWhen(true)]out AttributeData? attributeData) {
 			foreach (var attribute in symbol.GetAttributes()) {
 				var className = attribute.AttributeClass?.GetFullName();
 				if (!string.IsNullOrEmpty(className)) {

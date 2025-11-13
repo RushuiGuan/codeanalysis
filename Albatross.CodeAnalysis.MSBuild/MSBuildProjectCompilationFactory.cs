@@ -13,8 +13,6 @@ namespace Albatross.CodeAnalysis.MSBuild {
 			this.getProject = getProject;
 		}
 
-		public Workspace Workspace => this.workspace;
-
 		public Compilation Create() {
 			var project = workspace.OpenProjectAsync(this.getProject.Path).Result;
 			var compilation = project.GetCompilationAsync().Result

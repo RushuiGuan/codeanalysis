@@ -12,11 +12,11 @@ namespace Albatross.CodeAnalysis.Symbols {
 		public static INamedTypeSymbol GetRequiredSymbol(this Compilation compilation, string typeName) {
 			var symbol = compilation.GetTypeByMetadataName(typeName);
 			if (symbol == null) {
-				throw new ArgumentException($"Type {typeName} not found in compilation");
+				throw new ArgumentException($"Type {typeName} is not found");
 			}
 			return symbol;
 		}
-
+		[Obsolete]
 		public static bool IsDerivedFrom(this ITypeSymbol typeSymbol, string baseTypeName) {
 			if (typeSymbol.TypeKind == TypeKind.Class) {
 				for (var baseType = typeSymbol.BaseType; baseType != null; baseType = baseType.BaseType) {
@@ -36,6 +36,7 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 		}
 
+		[Obsolete]
 		public static bool TryGetGenericTypeArguments(this ITypeSymbol symbol, string genericTypeDefinitionName, out ITypeSymbol[] arguments) {
 			if (symbol is INamedTypeSymbol named && named.IsGenericType && named.OriginalDefinition.GetFullName() == genericTypeDefinitionName) {
 				arguments = named.TypeArguments.ToArray();
@@ -46,6 +47,7 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 		}
 
+		[Obsolete]
 		public static bool TryGetNullableValueType(this ITypeSymbol symbol, [NotNullWhen(true)] out ITypeSymbol? valueType) {
 			if (symbol is INamedTypeSymbol named && named.IsGenericType && named.OriginalDefinition.GetFullName() == My.GenericDefinition.Nullable) {
 				valueType = named.TypeArguments.Single();
@@ -75,13 +77,18 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 		}
 
+		[Obsolete]
 		public static bool IsNullable(this ITypeSymbol symbol) => symbol is INamedTypeSymbol named
 			&& (named.IsGenericType && named.OriginalDefinition.GetFullName() == My.GenericDefinition.Nullable || symbol.NullableAnnotation == NullableAnnotation.Annotated);
 
+		[Obsolete]
 		public static bool IsNullableReferenceType(this ITypeSymbol symbol) => symbol is INamedTypeSymbol named && !named.IsValueType && symbol.NullableAnnotation == NullableAnnotation.Annotated;
 
+		[Obsolete]
 		public static bool IsNullableValueType(this ITypeSymbol symbol) => symbol is INamedTypeSymbol named && named.IsGenericType && named.OriginalDefinition.GetFullName() == My.GenericDefinition.Nullable;
 
+
+		[Obsolete]
 		/// <summary>
 		/// for the sake of our sanity, this method will return false for string
 		/// </summary>
@@ -97,6 +104,11 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 		}
 
+
+		public static bool Is(this ISymbol left, ISymbol right)
+			=> SymbolEqualityComparer.Default.Equals(left, right);
+
+		[Obsolete]
 		public static string GetFullName(this ITypeSymbol symbol) {
 			string fullName;
 			if (symbol is IArrayTypeSymbol arraySymbol) {

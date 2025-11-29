@@ -193,5 +193,13 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 			return false;
 		}
+		public static bool HasInterface(this ITypeSymbol typeSymbol, INamedTypeSymbol interfaceSymbol) {
+			foreach (var @interface in typeSymbol.AllInterfaces) {
+				if (@interface.Is(interfaceSymbol)) {
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }

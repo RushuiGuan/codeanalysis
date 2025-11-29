@@ -1,5 +1,4 @@
-﻿using Albatross.CodeAnalysis.MSBuild;
-using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis.Symbols;
 using Microsoft.CodeAnalysis;
 using Xunit;
 namespace Albatross.CodeAnalysis.Test.Symbols {
@@ -12,30 +11,30 @@ namespace Albatross.CodeAnalysis.Test.Symbols {
 		[InlineData("namespace XX { class A{} } class MyClass{ XX.A P1;}", "XX.A")]
 		[InlineData("using System.Collections.Generic; class MyClass{ List<string> P1;}", "System.Collections.Generic.List<System.String>")]
 		[InlineData("using C = System.Collections; class MyClass{ C.ArrayList P1;}", "System.Collections.ArrayList")]
-		public void Run(string code, string expected) {
-			var compilation = code.CreateCompilation();
+		public async Task Run(string code, string expected) {
+			var compilation = await code.CreateNet8CompilationAsync();
 			var symbol = compilation.GetRequiredSymbol("MyClass");
 			var p1 = symbol.GetMembers().OfType<IFieldSymbol>().Where(x => x.Name == "P1").First();
 			Assert.Equal(expected, p1.Type.GetFullName());
 		}
 
 		[Fact]
-		public void TestGenericDefinitionName() {
-			var compilation = @"
+		public async Task TestGenericDefinitionName() {
+			var compilation =await @"
 				namespace Test {
 					public class MyBase<T> { }
 					public class MyBase<T, K> { }
 					public class MyClass : MyBase<string> { }
 				}
-			".CreateCompilation();
+			".CreateNet8CompilationAsync();
 			var genericDefinition = compilation.GetRequiredSymbol("Test.MyBase`1");
 			Assert.Equal("Test.MyBase<>", genericDefinition.GetFullName());
 			genericDefinition = compilation.GetRequiredSymbol("Test.MyBase`2");
 			Assert.Equal("Test.MyBase<,>", genericDefinition.GetFullName());
 		}
 		[Fact]
-		public void TestGetAttributeName() {
-			var compilation = @"[System.Serializable] class MyClass{}".CreateCompilation();
+		public async Task TestGetAttributeName() {
+			var compilation = await @"[System.Serializable] class MyClass{}".CreateNet8CompilationAsync();
 			var symbol = compilation.GetRequiredSymbol("MyClass");
 			var attribute = symbol.GetAttributes().First();
 			Assert.Equal("System.SerializableAttribute", attribute.AttributeClass?.GetFullName());

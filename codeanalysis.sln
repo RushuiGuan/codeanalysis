@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.8.34316.72
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1099E6C7-472C-4C23-BE56-C00019E891D5}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeAnalysis", "Albatross.CodeAnalysis\Albatross.CodeAnalysis.csproj", "{D6087BA6-FF4F-4B04-B05F-93C83EF20E05}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeAnalysis.MSBuild", "Albatross.CodeAnalysis.MSBuild\Albatross.CodeAnalysis.MSBuild.csproj", "{02FCB8BB-A8B9-43E1-82A2-4415729000DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeAnalysis.Test", "Albatross.CodeAnalysis.Test\Albatross.CodeAnalysis.Test.csproj", "{29EFA752-4677-4D34-A54B-10A11E87C7BE}"
 EndProject
@@ -34,10 +32,6 @@ Global
 		{D6087BA6-FF4F-4B04-B05F-93C83EF20E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6087BA6-FF4F-4B04-B05F-93C83EF20E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6087BA6-FF4F-4B04-B05F-93C83EF20E05}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02FCB8BB-A8B9-43E1-82A2-4415729000DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02FCB8BB-A8B9-43E1-82A2-4415729000DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02FCB8BB-A8B9-43E1-82A2-4415729000DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02FCB8BB-A8B9-43E1-82A2-4415729000DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29EFA752-4677-4D34-A54B-10A11E87C7BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{29EFA752-4677-4D34-A54B-10A11E87C7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29EFA752-4677-4D34-A54B-10A11E87C7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU

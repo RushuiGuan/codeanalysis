@@ -1,5 +1,4 @@
-﻿using Albatross.CodeAnalysis.MSBuild;
-using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis.Symbols;
 using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using Xunit;
@@ -21,8 +20,8 @@ namespace Albatross.CodeAnalysis.Test.Symbols {
 		[Theory]
 		[InlineData(@"[My(""a"")]class MyClass{ string P1;}", "a", "System.String")]
 		[InlineData(@"[My(1)]class MyClass{ string P1;}", 1, "System.Int32")]
-		public void Run(string code, object expected, string type) {
-			var compilation = (AttributeCode + code).CreateCompilation();
+		public async Task Run(string code, object expected, string type) {
+			var compilation =await (AttributeCode + code).CreateNet8CompilationAsync();
 			var symbol = compilation.GetRequiredSymbol("MyClass");
 			symbol.TryGetAttribute("MyAttribute", out var data);
 			Assert.NotNull(data);

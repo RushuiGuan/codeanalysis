@@ -1,10 +1,8 @@
-﻿using Albatross.CodeAnalysis.MSBuild;
-using Albatross.CodeAnalysis.Syntax;
+﻿using Albatross.CodeAnalysis.Syntax;
 using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Formatting;
 using Xunit;
 
 namespace Albatross.CodeAnalysis.Test.Syntax {
@@ -40,7 +38,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 				new LiteralNode("array").Node
 			]);
 			codeStack.With(node);
-			codeStack.BuildWithFormat().Trim().Should().Be("$\"/{test:yyyy-MM-dd}x/{test:#,#0}/array\"");
+			codeStack.GenerateCode().Trim().Should().Be("$\"/{test:yyyy-MM-dd}x/{test:#,#0}/array\"");
 		}
 		[Fact]
 		public void AllLiteral() {
@@ -52,16 +50,16 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 						.With(new LiteralNode("array-string-param"));
 				}
 			}
-			codeStack.BuildWithFormat().Trim().Should().Be(@"string path = $""{ControllerPath}/array-string-param""");
+			codeStack.GenerateCode().Trim().Should().Be(@"string path = $""{ControllerPath}/array-string-param""");
 		}
 
 		/// <summary>
 		/// For whatever reason, the formatter will create a space after '/' literal in the interpolated string
 		/// should ask the question in stack overflow,  Run this test to see if it is fixed
 		/// </summary>
-		[Fact(Skip = "this is a behavior test.  Run to see if changed")]
+		//[Fact(Skip = "this is a behavior test.  Run to see if changed")]
+		[Fact]
 		public void LowLevelCheck() {
-			using var workspace = new AdhocWorkspace();
 			var interpolatedString = SyntaxFactory.InterpolatedStringExpression(
 				SyntaxFactory.Token(SyntaxTriviaList.Empty,
 					SyntaxKind.InterpolatedStringStartToken,
@@ -83,8 +81,8 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 						SyntaxKind.InterpolatedStringEndToken,
 						SyntaxTriviaList.Empty)
 			);
-			var formatted = Formatter.Format(interpolatedString.NormalizeWhitespace(), workspace, null);
-			formatted.ToFullString().Should().Be(@"$""/Hello""");
+			var formatted = interpolatedString.NormalizeWhitespace().ToFullString();
+			formatted.Should().Be(@"$""/Hello""");
 		}
 	}
 }

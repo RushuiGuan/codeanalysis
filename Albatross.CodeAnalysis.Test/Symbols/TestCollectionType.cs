@@ -1,5 +1,4 @@
-﻿using Albatross.CodeAnalysis.MSBuild;
-using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis.Symbols;
 using Microsoft.CodeAnalysis;
 using Xunit;
 
@@ -29,11 +28,11 @@ using System.Collections.Generic;
 		[InlineData("IList", true)]
 		[InlineData("Number", false)]
 		[InlineData("Text", false)]
-		public void TestIsCollectionType(string propertyName, bool expected) {
-			var compilation = TestIsCollectionType_Code.CreateCompilation();
+		public async Task TestIsCollectionType(string propertyName, bool expected) {
+			var compilation = await TestIsCollectionType_Code.CreateNet8CompilationAsync();
 			var type = compilation.GetRequiredSymbol("MyClass");
 			var property = (IPropertySymbol)type.GetMembers(propertyName).First();
-			Assert.Equal(expected, property.Type.IsCollection());
+			Assert.Equal(expected, property.Type.IsCollection(new SymbolProvider(compilation)));
 		}
 
 		[Theory]
@@ -45,11 +44,11 @@ using System.Collections.Generic;
 		[InlineData("IList", true, "System.Int32")]
 		[InlineData("Number", false, "")]
 		[InlineData("Text", false, "")]
-		public void TestTryGetCollectionElement(string propertyName, bool expected, string expected_element) {
-			var compilation = TestIsCollectionType_Code.CreateCompilation();
+		public async Task TestTryGetCollectionElement(string propertyName, bool expected, string expected_element) {
+			var compilation = await TestIsCollectionType_Code.CreateNet8CompilationAsync();
 			var type = compilation.GetRequiredSymbol("MyClass");
 			var property = (IPropertySymbol)type.GetMembers(propertyName).First();
-			var result = property.Type.TryGetCollectionElementType(out var element);
+			var result = property.Type.TryGetCollectionElementType(new SymbolProvider(compilation), out var element);
 			Assert.Equal(expected, result);
 			if (result) {
 				Assert.Equal(expected_element, element!.GetFullName());

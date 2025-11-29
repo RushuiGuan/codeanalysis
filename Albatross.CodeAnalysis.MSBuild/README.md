@@ -1,1 +1,0 @@
-# Albatross.CodeAnalysis.MSBuild

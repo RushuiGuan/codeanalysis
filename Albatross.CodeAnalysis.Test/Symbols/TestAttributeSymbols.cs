@@ -23,7 +23,8 @@ namespace Albatross.CodeAnalysis.Test.Symbols {
 		public async Task Run(string code, object expected, string type) {
 			var compilation =await (AttributeCode + code).CreateNet8CompilationAsync();
 			var symbol = compilation.GetRequiredSymbol("MyClass");
-			symbol.TryGetAttribute("MyAttribute", out var data);
+			var attributeSymbol = compilation.GetRequiredSymbol("MyAttribute");
+			symbol.TryGetAttribute(attributeSymbol, out var data);
 			Assert.NotNull(data);
 			data.ConstructorArguments.FirstOrDefault().Value.Should().Be(expected);
 			Assert.IsType(Type.GetType(type)!, data.ConstructorArguments.First().Value);

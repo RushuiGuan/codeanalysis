@@ -6,53 +6,29 @@ using System.Linq;
 
 namespace Albatross.CodeAnalysis.Symbols {
 	public static class AttributeDataExtensions {
-		public static bool HasAttribute(this ISymbol symbol, string attributeName) {
-			foreach (var attribute in symbol.GetAttributes()) {
-				var className = attribute.AttributeClass?.GetFullName();
-				if (!string.IsNullOrEmpty(className)) {
-					if (className == attributeName) {
-						return true;
-					}
-				}
-			}
-			return false;
-		}
+		public static bool HasAttribute(this ISymbol symbol, INamedTypeSymbol targetAttribute)
+			=> symbol.GetAttributes().Any(x => x.AttributeClass?.Is(targetAttribute) == true);
 
-		public static bool TryGetAttribute(this ISymbol symbol, string attributeName, [NotNullWhen(true)]out AttributeData? attributeData) {
+		public static bool TryGetAttribute(this ISymbol symbol, INamedTypeSymbol targetAttribute, [NotNullWhen(true)]out AttributeData? attributeData) {
 			foreach (var attribute in symbol.GetAttributes()) {
-				var className = attribute.AttributeClass?.GetFullName();
-				if (!string.IsNullOrEmpty(className)) {
-					if (className == attributeName) {
-						attributeData = attribute;
-						return true;
-					}
+				if (attribute.AttributeClass?.Is(targetAttribute) == true) {
+					attributeData = attribute;
+					return true;
 				}
 			}
 			attributeData = null;
 			return false;
 		}
 
-		public static bool HasAttributeWithBaseType(this ISymbol symbol, string baseTypeName) {
-			foreach (var attribute in symbol.GetAttributes()) {
-				var className = attribute.AttributeClass?.BaseType?.GetFullName();
-				if (!string.IsNullOrEmpty(className)) {
-					if (className == baseTypeName) {
-						return true;
-					}
-				}
-			}
-			return false;
-		}
+		public static bool HasAttributeWithBaseType(this ISymbol symbol, INamedTypeSymbol baseType) 
+			=> symbol.GetAttributes().Any(x => x.AttributeClass?.BaseType?.Is(baseType) == true);
 
-		public static bool HasAttributeWithArguments(this ISymbol symbol, string attributeName, params string[] parameter) {
+		public static bool HasAttributeWithConstructorArguments(this ISymbol symbol, INamedTypeSymbol targetAtributes, params INamedTypeSymbol[] parameters) {
 			foreach (var attribute in symbol.GetAttributes()) {
-				var className = attribute.AttributeClass?.GetFullName();
-				if (!string.IsNullOrEmpty(className)) {
-					if (className == attributeName) {
-						var match = attribute.ConstructorArguments.Select(x => (x.Value as INamedTypeSymbol)?.GetFullName()).SequenceEqual(parameter);
-						if (match) {
-							return true;
-						}
+				if (attribute.AttributeClass?.Is(targetAtributes) == true) {
+					var match = attribute.ConstructorArguments.Select(x => x.Value as INamedTypeSymbol).SequenceEqual(parameters, SymbolEqualityComparer.Default);
+					if (match) {
+						return true;
 					}
 				}
 			}

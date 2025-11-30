@@ -32,7 +32,7 @@ using System.Collections.Generic;
 			var compilation = await TestIsCollectionType_Code.CreateNet8CompilationAsync();
 			var type = compilation.GetRequiredSymbol("MyClass");
 			var property = (IPropertySymbol)type.GetMembers(propertyName).First();
-			Assert.Equal(expected, property.Type.IsCollection(new SymbolProvider(compilation)));
+			Assert.Equal(expected, property.Type.IsCollection(compilation));
 		}
 
 		[Theory]
@@ -48,7 +48,7 @@ using System.Collections.Generic;
 			var compilation = await TestIsCollectionType_Code.CreateNet8CompilationAsync();
 			var type = compilation.GetRequiredSymbol("MyClass");
 			var property = (IPropertySymbol)type.GetMembers(propertyName).First();
-			var result = property.Type.TryGetCollectionElementType(new SymbolProvider(compilation), out var element);
+			var result = property.Type.TryGetCollectionElementType(compilation, out var element);
 			Assert.Equal(expected, result);
 			if (result) {
 				Assert.Equal(expected_element, element!.GetFullName());

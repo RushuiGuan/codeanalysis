@@ -25,7 +25,7 @@ namespace Albatross.CodeAnalysis.Test.Symbols {
 			var compilation = await code.CreateNet8CompilationAsync();
 			var symbol = compilation.GetRequiredSymbol("TestClass");
 			var propertySymbol  = symbol.GetMembers().OfType<Microsoft.CodeAnalysis.IPropertySymbol>().Where(x => x.Name == property).First();
-			propertySymbol.Type.IsNullable(new SymbolProvider(compilation)).Should().Be(nullable);
+			propertySymbol.Type.IsNullable(compilation).Should().Be(nullable);
 		}
 
 		[Theory]
@@ -39,7 +39,7 @@ namespace Albatross.CodeAnalysis.Test.Symbols {
 			var compilation = await code.CreateNet8CompilationAsync();
 			var symbol = compilation.GetRequiredSymbol("TestClass");
 			var propertySymbol = symbol.GetMembers().OfType<Microsoft.CodeAnalysis.IPropertySymbol>().Where(x => x.Name == property).First();
-			propertySymbol.Type.IsNullableValueType(new SymbolProvider(compilation)).Should().Be(nullable);
+			propertySymbol.Type.IsNullableValueType(compilation).Should().Be(nullable);
 		}
 
 		[Theory]
@@ -65,7 +65,7 @@ namespace Albatross.CodeAnalysis.Test.Symbols {
 			var compilation = await code.CreateNet8CompilationAsync();
 			var symbol = compilation.GetRequiredSymbol("TestClass");
 			var propertySymbol = symbol.GetMembers().OfType<Microsoft.CodeAnalysis.IPropertySymbol>().Where(x => x.Name == property).First();
-			var result = propertySymbol.Type.TryGetNullableValueType(new SymbolProvider(compilation), out var underlyingType);
+			var result = propertySymbol.Type.TryGetNullableValueType(compilation, out var underlyingType);
 			Assert.Equal(nullable, result);
 			Assert.Equal(genericType, underlyingType?.GetFullName());
 

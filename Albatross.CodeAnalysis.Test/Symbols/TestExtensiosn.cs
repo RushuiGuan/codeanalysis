@@ -59,18 +59,18 @@ public class MyClass {
 			var number3Property = (IPropertySymbol)type.GetMembers("Number3").First();
 
 			textProperty.Type.IsNullableReferenceType().Should().BeTrue();
-			textProperty.Type.IsNullableValueType(new SymbolProvider(compilation)).Should().BeFalse();
-			text2Property.Type.IsNullableValueType(new SymbolProvider(compilation)).Should().BeFalse();
-			text2Property.Type.IsNullableValueType(new SymbolProvider(compilation)).Should().BeFalse();
+			textProperty.Type.IsNullableValueType(compilation).Should().BeFalse();
+			text2Property.Type.IsNullableValueType(compilation).Should().BeFalse();
+			text2Property.Type.IsNullableValueType(compilation).Should().BeFalse();
 
 			numberProperty.Type.IsNullableReferenceType().Should().BeFalse();
-			numberProperty.Type.IsNullableValueType(new SymbolProvider(compilation)).Should().BeTrue();
+			numberProperty.Type.IsNullableValueType(compilation).Should().BeTrue();
 
 			number2Property.Type.IsNullableReferenceType().Should().BeFalse();
-			number2Property.Type.IsNullableValueType(new SymbolProvider(compilation)).Should().BeTrue();
+			number2Property.Type.IsNullableValueType(compilation).Should().BeTrue();
 
 			number3Property.Type.IsNullableReferenceType().Should().BeFalse();
-			number3Property.Type.IsNullableValueType(new SymbolProvider(compilation)).Should().BeFalse();
+			number3Property.Type.IsNullableValueType(compilation).Should().BeFalse();
 		}
 
 		[Fact]
@@ -90,14 +90,14 @@ public string? Text{ get; set; }
 			var number2Property = (IPropertySymbol)type.GetMembers("Number2").First();
 			var number3Property = (IPropertySymbol)type.GetMembers("Number3").First();
 
-			textProperty.Type.TryGetNullableValueType(new SymbolProvider(compilation), out var valueType).Should().BeFalse();
-			numberProperty.Type.TryGetNullableValueType(new SymbolProvider(compilation), out valueType).Should().BeTrue();
+			textProperty.Type.TryGetNullableValueType(compilation, out var valueType).Should().BeFalse();
+			numberProperty.Type.TryGetNullableValueType(compilation, out valueType).Should().BeTrue();
 			valueType!.GetFullName().Should().Be("System.Int32");
 
-			number2Property.Type.TryGetNullableValueType(new SymbolProvider(compilation), out valueType).Should().BeTrue();
+			number2Property.Type.TryGetNullableValueType(compilation, out valueType).Should().BeTrue();
 			valueType!.GetFullName().Should().Be("System.Int32");
 
-			number3Property.Type.TryGetNullableValueType(new SymbolProvider(compilation), out valueType).Should().BeFalse();
+			number3Property.Type.TryGetNullableValueType(compilation, out valueType).Should().BeFalse();
 		}
 
 		[Theory]

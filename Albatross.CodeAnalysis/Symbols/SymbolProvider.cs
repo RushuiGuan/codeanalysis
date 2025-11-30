@@ -1,31 +1,14 @@
 ﻿using Microsoft.CodeAnalysis;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 
 namespace Albatross.CodeAnalysis.Symbols {
-	public class SymbolProvider {
-		protected readonly Compilation compilation;
+	public static class SymbolProvider {
+		public static INamedTypeSymbol String (this Compilation compilation) => compilation.GetSpecialType(SpecialType.System_String);
+		public static INamedTypeSymbol IEnumerable (this Compilation compilation) => compilation.GetRequiredSymbol("System.Collections.IEnumerable");
+		public static INamedTypeSymbol Nullable (this Compilation compilation) => compilation.GetRequiredSymbol("System.Nullable`1");
+		public static INamedTypeSymbol IAsyncEnumerable (this Compilation compilation) => compilation.GetRequiredSymbol("System.Collections.Generic.IAsyncEnumerable`1");
+		public static INamedTypeSymbol IEnumerableGenericDefinition (this Compilation compilation) => compilation.GetRequiredSymbol("System.Collections.Generic.IEnumerable`1");
 
-		public SymbolProvider(Compilation compilation) {
-			this.compilation = compilation;
-			this.String = compilation.GetSpecialType(SpecialType.System_String);
-			this.IEnumerable = compilation.GetRequiredSymbol("System.Collections.IEnumerable");
-			this.Nullable = compilation.GetRequiredSymbol("System.Nullable`1");
-			this.IAsyncEnumerable = compilation.GetRequiredSymbol("System.Collections.Generic.IAsyncEnumerable`1");
-			this.IEnumerableGenericDefinition = compilation.GetRequiredSymbol("System.Collections.Generic.IEnumerable`1");
-		}
-
-		#region symbols
-		public INamedTypeSymbol String { get; }
-		public INamedTypeSymbol IEnumerable { get; }
-		public INamedTypeSymbol Nullable { get; }
-		public INamedTypeSymbol GetNullableOf(ITypeSymbol type) => Nullable.Construct(type);
-		public INamedTypeSymbol IAsyncEnumerable { get; }
-		public INamedTypeSymbol IEnumerableGenericDefinition { get; }
-		#endregion
-
-		
+		public static INamedTypeSymbol JsonConverterAttribute(this Compilation compilation) => compilation.GetRequiredSymbol("System.Text.Json.Serialization.JsonConverterAttribute");
+		public static INamedTypeSymbol JsonStringEnumConverter(this Compilation compilation) => compilation.GetRequiredSymbol("System.Text.Json.Serialization.JsonStringEnumConverter");
 	}
 }

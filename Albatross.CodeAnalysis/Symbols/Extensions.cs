@@ -10,16 +10,16 @@ using System.Text;
 namespace Albatross.CodeAnalysis.Symbols {
 	public static class Extensions {
 		#region nullable helpers
-		public static bool IsNullable(this ITypeSymbol symbol, SymbolProvider provider) => (symbol is INamedTypeSymbol named
-			&& (named.IsGenericType && named.OriginalDefinition.Is(provider.Nullable) || symbol.NullableAnnotation == NullableAnnotation.Annotated)) ||
+		public static bool IsNullable(this ITypeSymbol symbol, Compilation compilation) => (symbol is INamedTypeSymbol named
+			&& (named.IsGenericType && named.OriginalDefinition.Is(compilation.Nullable()) || symbol.NullableAnnotation == NullableAnnotation.Annotated)) ||
 			symbol is IArrayTypeSymbol arrayType && arrayType.NullableAnnotation == NullableAnnotation.Annotated;
 		public static bool IsNullableReferenceType(this ITypeSymbol symbol) => symbol is INamedTypeSymbol named
 			&& !named.IsValueType && symbol.NullableAnnotation == NullableAnnotation.Annotated || 
 			symbol is IArrayTypeSymbol arrayType && arrayType.NullableAnnotation == NullableAnnotation.Annotated;
-		public static bool IsNullableValueType(this ITypeSymbol symbol, SymbolProvider provider) => symbol is INamedTypeSymbol named
-			&& named.IsGenericType && named.OriginalDefinition.Is(provider.Nullable);
-		public static bool TryGetNullableValueType(this ITypeSymbol symbol, SymbolProvider provider, [NotNullWhen(true)] out ITypeSymbol? valueType) {
-			if (symbol is INamedTypeSymbol named && named.IsGenericType && named.OriginalDefinition.Is(provider.Nullable)) {
+		public static bool IsNullableValueType(this ITypeSymbol symbol, Compilation compilation) => symbol is INamedTypeSymbol named
+			&& named.IsGenericType && named.OriginalDefinition.Is(compilation.Nullable());
+		public static bool TryGetNullableValueType(this ITypeSymbol symbol, Compilation compilation, [NotNullWhen(true)] out ITypeSymbol? valueType) {
+			if (symbol is INamedTypeSymbol named && named.IsGenericType && named.OriginalDefinition.Is(compilation.Nullable())) {
 				valueType = named.TypeArguments.Single();
 				return true;
 			} else {
@@ -30,16 +30,16 @@ namespace Albatross.CodeAnalysis.Symbols {
 		#endregion
 
 		#region collection helpers
-		public static bool IsCollection(this ITypeSymbol symbol, SymbolProvider provider) {
+		public static bool IsCollection(this ITypeSymbol symbol, Compilation compilation) {
 			if (symbol.SpecialType == SpecialType.System_String) {
 				return false;
 			} else if (symbol is IArrayTypeSymbol) {
 				return true;
 			} else {
-				return symbol.Is(provider.IEnumerable) || symbol.AllInterfaces.Any(x => x.Is(provider.IEnumerable));
+				return symbol.Is(compilation.IEnumerable()) || symbol.AllInterfaces.Any(x => x.Is(compilation.IEnumerable()));
 			}
 		}
-		public static bool TryGetCollectionElementType(this ITypeSymbol typeSymbol, SymbolProvider provider, [NotNullWhen(true)] out ITypeSymbol? elementType) {
+		public static bool TryGetCollectionElementType(this ITypeSymbol typeSymbol, Compilation compilation, [NotNullWhen(true)] out ITypeSymbol? elementType) {
 			if (typeSymbol.SpecialType == SpecialType.System_String) {
 				elementType = null;
 				return false;
@@ -47,12 +47,12 @@ namespace Albatross.CodeAnalysis.Symbols {
 				elementType = arrayTypeSymbol.ElementType;
 				return true;
 			} else {
-				if (typeSymbol.TryGetGenericTypeArguments( provider.IEnumerableGenericDefinition, out var arguments)) {
+				if (typeSymbol.TryGetGenericTypeArguments( compilation.IEnumerableGenericDefinition(), out var arguments)) {
 					elementType = arguments[0];
 					return true;
 				} else {
 					foreach (var @interface in typeSymbol.AllInterfaces) {
-						if (@interface.TryGetGenericTypeArguments(provider.IEnumerableGenericDefinition, out var args)) {
+						if (@interface.TryGetGenericTypeArguments(compilation.IEnumerableGenericDefinition(), out var args)) {
 							elementType = args[0];
 							return true;
 						}

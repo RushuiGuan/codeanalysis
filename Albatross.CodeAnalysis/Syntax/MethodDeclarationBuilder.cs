@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,9 +41,14 @@ namespace Albatross.CodeAnalysis.Syntax {
 			return this;
 		}
 		public MethodDeclarationSyntax Node { get; private set; }
-		bool usedByInterface;
+		bool signatureOnly;
+		[Obsolete]
 		public MethodDeclarationBuilder UsedByInterface() {
-			usedByInterface = true;
+			signatureOnly = true;
+			return this;
+		}
+		public MethodDeclarationBuilder SignatureOnly() {
+			signatureOnly = true;
 			return this;
 		}
 
@@ -61,7 +67,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 			if (attributes.Any()) {
 				Node = Node.WithAttributeLists(SyntaxFactory.List(attributes.Select(x => SyntaxFactory.AttributeList(SyntaxFactory.SingletonSeparatedList(x)))));
 			}
-			if (usedByInterface) {
+			if (signatureOnly) {
 				Node = Node.WithSemicolonToken(SyntaxFactory.Token(SyntaxKind.SemicolonToken));
 			} else {
 				Node = Node.WithBody(SyntaxFactory.Block(statements));

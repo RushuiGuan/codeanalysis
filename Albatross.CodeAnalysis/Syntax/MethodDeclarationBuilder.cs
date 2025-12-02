@@ -27,6 +27,10 @@ namespace Albatross.CodeAnalysis.Syntax {
 			Node = Node.AddModifiers(SyntaxFactory.Token(SyntaxKind.ProtectedKeyword));
 			return this;
 		}
+		public MethodDeclarationBuilder Partial() {
+			Node = Node.AddModifiers(SyntaxFactory.Token(SyntaxKind.PartialKeyword));
+			return this;
+		}
 		public MethodDeclarationBuilder Static() {
 			Node = Node.AddModifiers(SyntaxFactory.Token(SyntaxKind.StaticKeyword));
 			return this;

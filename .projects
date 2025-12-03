@@ -1,5 +1,6 @@
 # Packages
 Albatross.CodeAnalysis
+Albatross.CodeAnalysis.NetStandard2Helper
 
 # Tests
 Albatross.CodeAnalysis.Test

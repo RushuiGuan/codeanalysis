@@ -17,7 +17,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 				.Begin(new ClassDeclarationBuilder("Test").Public())
 					.Begin(new ConstructorDeclarationBuilder("Test").Public()).End()
 				.End().Build();
-			Assert.Equal(ClassBuilderWithConstructor_Expected, node.NormalizeLineEnding());
+			ClassBuilderWithConstructor_Expected.EqualsIgnoringLineEndings(node);
 		}
 		const string ConstructorWithParameter_Expected = @"public class Test
 {
@@ -34,7 +34,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 					.Begin(new ConstructorDeclarationBuilder("Test").Public()).With(new ParameterNode(new TypeNode("string"), "name"))
 					.End()
 				.End().Build();
-			Assert.Equal(ConstructorWithParameter_Expected, node.NormalizeLineEnding());
+			ConstructorWithParameter_Expected.EqualsIgnoringLineEndings(node);
 		}
 		const string ConstructorWithParameterAndBaseCall_Expected = @"public class Test
 {
@@ -51,7 +51,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 						.Begin(new ArgumentListBuilder()).With(new IdentifierNode("name")).End()
 					.End()
 				.End().Build();
-			Assert.Equal(ConstructorWithParameterAndBaseCall_Expected, node.NormalizeLineEnding());
+			ConstructorWithParameterAndBaseCall_Expected.EqualsIgnoringLineEndings(node);
 		}
 	}
 }

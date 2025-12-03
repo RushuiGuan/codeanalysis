@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
+using Albatross.Testing;
 using FluentAssertions;
 using Xunit;
 
@@ -8,7 +9,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 		public void FieldWithoutInitializer() {
 			var codestack = new CodeStack()
 				.Complete(new FieldDeclarationBuilder("int", "test"));
-			codestack.Build().Should().Be("private int test;\n");
+			codestack.Build().EqualsIgnoringLineEndings("private int test;");
 		}
 
 		[Fact]
@@ -17,7 +18,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 				.Begin(new FieldDeclarationBuilder("int", "test"))
 					.With(new LiteralNode(1))
 				.End();
-			codestack.Build().Should().Be("private int test = 1;\n");
+			codestack.Build().EqualsIgnoringLineEndings("private int test = 1;");
 		}
 	}
 }

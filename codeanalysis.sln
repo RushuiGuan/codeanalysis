@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.CodeGen", "Sample.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.CodeGen.Consumer", "Sample.CodeGen.Consumer\Sample.CodeGen.Consumer.csproj", "{CF5FC557-38E7-45D1-AA86-3D54C974E772}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeAnalysis.NetStandard2Helper", "Albatross.CodeAnalysis.NetStandard2Helper\Albatross.CodeAnalysis.NetStandard2Helper.csproj", "{0A09AA8E-B4AC-4AFD-B157-CA79EDC5C18E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeAnalysis.Polyfill", "Albatross.CodeAnalysis.Polyfill\Albatross.CodeAnalysis.Polyfill.csproj", "{0A09AA8E-B4AC-4AFD-B157-CA79EDC5C18E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polyfill.Test", "Polyfill.Test\Polyfill.Test.csproj", "{BA8B7088-2B6F-466E-BE44-A7DFA4A3333F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{0A09AA8E-B4AC-4AFD-B157-CA79EDC5C18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A09AA8E-B4AC-4AFD-B157-CA79EDC5C18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A09AA8E-B4AC-4AFD-B157-CA79EDC5C18E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8B7088-2B6F-466E-BE44-A7DFA4A3333F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8B7088-2B6F-466E-BE44-A7DFA4A3333F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8B7088-2B6F-466E-BE44-A7DFA4A3333F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8B7088-2B6F-466E-BE44-A7DFA4A3333F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

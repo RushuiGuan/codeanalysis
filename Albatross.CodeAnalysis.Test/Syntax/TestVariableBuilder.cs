@@ -9,7 +9,7 @@ namespace Albatross.CodeAnalysis.Test {
 		[InlineData("int test = 1", "int", "test", 1)]
 		public void VariableWithInitialization(string expected, string? type, string name, int value) {
 			var node = new CodeStack().Begin(new VariableBuilder(type ?? string.Empty, name)).With(new LiteralNode(value)).End().Build();
-			Assert.Equal(expected, node.ToString().Trim());
+			expected.EqualsIgnoringLineEndings(node);
 		}
 
 		[Theory]
@@ -17,7 +17,7 @@ namespace Albatross.CodeAnalysis.Test {
 		[InlineData("int test", "int", "test")]
 		public void VariableDeclarationOnly(string expected, string? type, string name) {
 			var node = new CodeStack().Begin(new VariableBuilder(type ?? string.Empty, name)).End().Build();
-			Assert.Equal(expected, node.ToString().Trim());
+			expected.EqualsIgnoringLineEndings(node);
 		}
 
 		[Fact]
@@ -27,7 +27,7 @@ namespace Albatross.CodeAnalysis.Test {
 				.Begin(new AssignmentExpressionBuilder("test"))
 					.With(new LiteralNode("a"))
 				.End();
-			Assert.Equal("string[] test\r\ntest = \"a\"".NormalizeLineEnding(), cs.Build().NormalizeLineEnding().Trim());
+			"string[] test\r\ntest = \"a\"".EqualsIgnoringLineEndings(cs.Build());
 		}
 	}
 }

@@ -1,3 +1,4 @@
+#if NETSTANDARD2_0
 namespace System.Diagnostics.CodeAnalysis {
 	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.Property, Inherited = false)]
 	public sealed class AllowNullAttribute : Attribute { }
@@ -59,3 +60,4 @@ namespace System.Diagnostics.CodeAnalysis {
 		public string[] Members { get; }
 	}
 }
+#endif

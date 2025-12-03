@@ -7,6 +7,6 @@ For example in your .csproj:
 
 ```xml
 <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-  <PackageReference Include="Albatross.CodeAnalysis.NetStandard2Helper" Version="1.0.0" />
+    <ProjectReference Include="..\Albatross.CodeAnalysis.NetStandard2Helper\Albatross.CodeAnalysis.NetStandard2Helper.csproj" PrivateAssets="All" />
 </ItemGroup>
 ```

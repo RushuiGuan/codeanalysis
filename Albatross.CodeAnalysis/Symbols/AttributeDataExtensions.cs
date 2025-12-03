@@ -6,10 +6,14 @@ using System.Linq;
 
 namespace Albatross.CodeAnalysis.Symbols {
 	public static class AttributeDataExtensions {
-		public static bool HasAttribute(this ISymbol symbol, INamedTypeSymbol targetAttribute)
-			=> symbol.GetAttributes().Any(x => x.AttributeClass?.Is(targetAttribute) == true);
+		public static bool HasAttribute(this ISymbol symbol, INamedTypeSymbol? targetAttribute)
+			=> targetAttribute != null && symbol.GetAttributes().Any(x => x.AttributeClass?.Is(targetAttribute) == true);
 
-		public static bool TryGetAttribute(this ISymbol symbol, INamedTypeSymbol targetAttribute, [NotNullWhen(true)]out AttributeData? attributeData) {
+		public static bool TryGetAttribute(this ISymbol symbol, INamedTypeSymbol? targetAttribute, [NotNullWhen(true)]out AttributeData? attributeData) {
+			if(targetAttribute == null){
+				attributeData = null;
+				return false;
+			}
 			foreach (var attribute in symbol.GetAttributes()) {
 				if (attribute.AttributeClass?.Is(targetAttribute) == true) {
 					attributeData = attribute;
@@ -20,12 +24,15 @@ namespace Albatross.CodeAnalysis.Symbols {
 			return false;
 		}
 
-		public static bool HasAttributeWithBaseType(this ISymbol symbol, INamedTypeSymbol baseType) 
-			=> symbol.GetAttributes().Any(x => x.AttributeClass?.BaseType?.Is(baseType) == true);
+		public static bool HasAttributeWithBaseType(this ISymbol symbol, INamedTypeSymbol? baseType) 
+			=> baseType != null && symbol.GetAttributes().Any(x => x.AttributeClass?.BaseType?.Is(baseType) == true);
 
-		public static bool HasAttributeWithConstructorArguments(this ISymbol symbol, INamedTypeSymbol targetAtributes, params INamedTypeSymbol[] parameters) {
+		public static bool HasAttributeWithConstructorArguments(this ISymbol symbol, INamedTypeSymbol? targetAtribute, params INamedTypeSymbol[] parameters) {
+			if(targetAtribute == null){
+				return false;
+			}
 			foreach (var attribute in symbol.GetAttributes()) {
-				if (attribute.AttributeClass?.Is(targetAtributes) == true) {
+				if (attribute.AttributeClass?.Is(targetAtribute) == true) {
 					var match = attribute.ConstructorArguments.Select(x => x.Value as INamedTypeSymbol).SequenceEqual(parameters, SymbolEqualityComparer.Default);
 					if (match) {
 						return true;

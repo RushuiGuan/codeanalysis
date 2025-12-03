@@ -10,16 +10,20 @@ using System.Text;
 namespace Albatross.CodeAnalysis.Symbols {
 	public static class Extensions {
 		#region nullable helpers
-		public static bool IsNullable(this ITypeSymbol symbol, Compilation compilation) => (symbol is INamedTypeSymbol named
-			&& (named.IsGenericType && named.OriginalDefinition.Is(compilation.Nullable()) || symbol.NullableAnnotation == NullableAnnotation.Annotated)) ||
-			symbol is IArrayTypeSymbol arrayType && arrayType.NullableAnnotation == NullableAnnotation.Annotated;
-		public static bool IsNullableReferenceType(this ITypeSymbol symbol) => symbol is INamedTypeSymbol named
-			&& !named.IsValueType && symbol.NullableAnnotation == NullableAnnotation.Annotated || 
-			symbol is IArrayTypeSymbol arrayType && arrayType.NullableAnnotation == NullableAnnotation.Annotated;
-		public static bool IsNullableValueType(this ITypeSymbol symbol, Compilation compilation) => symbol is INamedTypeSymbol named
-			&& named.IsGenericType && named.OriginalDefinition.Is(compilation.Nullable());
-		public static bool TryGetNullableValueType(this ITypeSymbol symbol, Compilation compilation, [NotNullWhen(true)] out ITypeSymbol? valueType) {
-			if (symbol is INamedTypeSymbol named && named.IsGenericType && named.OriginalDefinition.Is(compilation.Nullable())) {
+
+		public static bool IsNullable(this ITypeSymbol? symbol, Compilation compilation)
+			=> symbol.IsNullableReferenceType() || symbol.IsNullableValueType(compilation);
+		
+		public static bool IsNullableReferenceType(this ITypeSymbol? symbol) 
+			=> symbol is INamedTypeSymbol { IsValueType: false } && symbol.NullableAnnotation == NullableAnnotation.Annotated 
+			   || symbol is IArrayTypeSymbol { NullableAnnotation: NullableAnnotation.Annotated };
+		
+		public static bool IsNullableValueType(this ITypeSymbol? symbol, Compilation compilation) 
+			=> symbol is INamedTypeSymbol { IsGenericType: true } named 
+			   && named.OriginalDefinition.Is(compilation.Nullable());
+		
+		public static bool TryGetNullableValueType(this ITypeSymbol? symbol, Compilation compilation, [NotNullWhen(true)] out ITypeSymbol? valueType) {
+			if (symbol is INamedTypeSymbol { IsGenericType: true } named && named.OriginalDefinition.Is(compilation.Nullable())) {
 				valueType = named.TypeArguments.Single();
 				return true;
 			} else {
@@ -30,7 +34,10 @@ namespace Albatross.CodeAnalysis.Symbols {
 		#endregion
 
 		#region collection helpers
-		public static bool IsCollection(this ITypeSymbol symbol, Compilation compilation) {
+		public static bool IsCollection(this ITypeSymbol? symbol, Compilation compilation) {
+			if (symbol == null) {
+				return false;
+			}
 			if (symbol.SpecialType == SpecialType.System_String) {
 				return false;
 			} else if (symbol is IArrayTypeSymbol) {
@@ -39,7 +46,11 @@ namespace Albatross.CodeAnalysis.Symbols {
 				return symbol.Is(compilation.IEnumerable()) || symbol.AllInterfaces.Any(x => x.Is(compilation.IEnumerable()));
 			}
 		}
-		public static bool TryGetCollectionElementType(this ITypeSymbol typeSymbol, Compilation compilation, [NotNullWhen(true)] out ITypeSymbol? elementType) {
+		public static bool TryGetCollectionElementType(this ITypeSymbol? typeSymbol, Compilation compilation, [NotNullWhen(true)] out ITypeSymbol? elementType) {
+			if (typeSymbol == null) {
+				elementType = null;
+				return false;
+			}
 			if (typeSymbol.SpecialType == SpecialType.System_String) {
 				elementType = null;
 				return false;
@@ -82,7 +93,7 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 			return symbol;
 		}
-		public static bool Is(this ISymbol left, ISymbol right) => SymbolEqualityComparer.Default.Equals(left, right);
+		public static bool Is(this ISymbol? left, ISymbol? right) => SymbolEqualityComparer.Default.Equals(left, right);
 		public static string GetFullName(this ITypeSymbol symbol) {
 			string fullName;
 			if (symbol is IArrayTypeSymbol arraySymbol) {
@@ -119,7 +130,8 @@ namespace Albatross.CodeAnalysis.Symbols {
 				return $"{symbol.ContainingNamespace.GetFullNamespace()}.{symbol.Name}";
 			}
 		}
-		public static bool IsPartial(this INamedTypeSymbol symbol) =>
+		public static bool IsPartial(this INamedTypeSymbol? symbol) => 
+			symbol != null &&
 			symbol.DeclaringSyntaxReferences.Select(x => x.GetSyntax())
 				.OfType<InterfaceDeclarationSyntax>()
 				.Any(x => x.Modifiers.Any(SyntaxKind.PartialKeyword));
@@ -131,12 +143,17 @@ namespace Albatross.CodeAnalysis.Symbols {
 				return symbol.GetFullName();
 			}
 		}
-		public static bool IsGenericTypeDefinition(this INamedTypeSymbol symbol) => symbol.IsGenericType && symbol.IsDefinition;
-		public static bool IsConcreteClass(this INamedTypeSymbol symbol) =>
-			symbol.TypeKind == TypeKind.Class
-			&& !symbol.IsAbstract
-			&& !symbol.IsStatic
-			&& !IsGenericTypeDefinition(symbol);
+		public static bool IsGenericTypeDefinition(this INamedTypeSymbol? symbol) 
+			=> symbol is { IsGenericType: true, IsDefinition: true };
+		public static bool IsConcreteClass(this INamedTypeSymbol? symbol) {
+			if (symbol is not { TypeKind: TypeKind.Class }) { 
+				return false; 
+			} else {
+				return symbol is { IsAbstract: false, IsStatic: false }
+				       && !IsGenericTypeDefinition(symbol);
+			}
+		}
+
 		public static IEnumerable<IPropertySymbol> GetProperties(this INamedTypeSymbol symbol, bool useBaseClassProperties) {
 			foreach (var member in symbol.GetMembers().OfType<IPropertySymbol>()) {
 				if (member.SetMethod?.DeclaredAccessibility == Accessibility.Public
@@ -158,7 +175,10 @@ namespace Albatross.CodeAnalysis.Symbols {
 				}
 			}
 		}
-		public static bool IsNumeric(this ITypeSymbol symbol) {
+		public static bool IsNumeric(this ITypeSymbol? symbol) {
+			if (symbol == null) {
+				return false;
+			}
 			switch (symbol.SpecialType) {
 				case SpecialType.System_Byte:
 				case SpecialType.System_SByte:
@@ -176,14 +196,20 @@ namespace Albatross.CodeAnalysis.Symbols {
 					return false;
 			}
 		}
-		public static bool IsConstructedFromDefinition(this INamedTypeSymbol typeSymbol, INamedTypeSymbol genericDefinitionSymbol) {
+		public static bool IsConstructedFromDefinition(this INamedTypeSymbol? typeSymbol, INamedTypeSymbol genericDefinitionSymbol) {
+			if (typeSymbol == null) {
+				return false;
+			}
 			if (typeSymbol.IsGenericType && genericDefinitionSymbol.IsGenericType && genericDefinitionSymbol.IsDefinition) {
 				return SymbolEqualityComparer.Default.Equals(typeSymbol.OriginalDefinition, genericDefinitionSymbol);
 			} else {
 				return false;
 			}
 		}
-		public static bool IsDerivedFrom(this ITypeSymbol typeSymbol, INamedTypeSymbol baseTypeSymbol) {
+		public static bool IsDerivedFrom(this ITypeSymbol typeSymbol, INamedTypeSymbol? baseTypeSymbol) {
+			if (baseTypeSymbol == null) {
+				return false;
+			}
 			if (typeSymbol.TypeKind == TypeKind.Class) {
 				for (var target = typeSymbol.BaseType; target != null; target = target.BaseType) {
 					if (target.Is(baseTypeSymbol)) {
@@ -193,7 +219,10 @@ namespace Albatross.CodeAnalysis.Symbols {
 			}
 			return false;
 		}
-		public static bool HasInterface(this ITypeSymbol typeSymbol, INamedTypeSymbol interfaceSymbol) {
+		public static bool HasInterface(this ITypeSymbol typeSymbol, INamedTypeSymbol? interfaceSymbol) {
+			if (interfaceSymbol == null) {
+				return false;
+			}
 			foreach (var @interface in typeSymbol.AllInterfaces) {
 				if (@interface.Is(interfaceSymbol)) {
 					return true;

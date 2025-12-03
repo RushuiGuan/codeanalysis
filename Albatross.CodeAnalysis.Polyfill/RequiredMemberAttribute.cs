@@ -1,4 +1,4 @@
-﻿#if !NET7_0_OR_GREATER
+﻿#if NETSTANDARD2_0
 namespace System.Runtime.CompilerServices {
 	[AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
 	public sealed class CompilerFeatureRequiredAttribute : Attribute {

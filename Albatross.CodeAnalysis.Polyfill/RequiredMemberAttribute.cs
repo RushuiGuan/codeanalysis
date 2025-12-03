@@ -20,4 +20,10 @@ namespace System.Runtime.CompilerServices {
 		public SetsRequiredMembersAttribute() { }
 	}
 }
+namespace System.Diagnostics.CodeAnalysis {
+	[AttributeUsage(AttributeTargets.Constructor, Inherited = false)]
+	public sealed class SetsRequiredMembersAttribute : Attribute {
+		public SetsRequiredMembersAttribute() { }
+	}
+}
 #endif

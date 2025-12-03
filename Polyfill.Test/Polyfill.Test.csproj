@@ -1,16 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference
-                Condition="'$(TargetFramework)' == 'netstandard2.0'"
-                Include="..\Albatross.CodeAnalysis.Polyfill\Albatross.CodeAnalysis.Polyfill.csproj"
-                PrivateAssets="All"/>
-    </ItemGroup>
-
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Condition="'$(TargetFramework)' == 'netstandard2.0'" Include="..\Albatross.CodeAnalysis.Polyfill\Albatross.CodeAnalysis.Polyfill.csproj" PrivateAssets="All" />
+	</ItemGroup>
 </Project>

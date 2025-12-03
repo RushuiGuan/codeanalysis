@@ -1,6 +1,6 @@
 # Packages
 Albatross.CodeAnalysis
-Albatross.CodeAnalysis.NetStandard2Helper
+Albatross.CodeAnalysis.Polyfill
 
 # Tests
 Albatross.CodeAnalysis.Test

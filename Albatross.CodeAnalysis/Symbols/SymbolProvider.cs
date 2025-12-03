@@ -8,6 +8,7 @@ namespace Albatross.CodeAnalysis.Symbols {
 		public static INamedTypeSymbol TimeOnly (this Compilation compilation) => compilation.GetRequiredSymbol("System.TimeOnly");
 		public static INamedTypeSymbol DateTimeOffset (this Compilation compilation) => compilation.GetRequiredSymbol("System.DateTimeOffset");
 		public static INamedTypeSymbol Object (this Compilation compilation) => compilation.GetSpecialType(SpecialType.System_Object);
+		public static INamedTypeSymbol Byte(this Compilation compilation) => compilation.GetSpecialType(SpecialType.System_Byte);
 		
 		public static INamedTypeSymbol IEnumerable (this Compilation compilation) => compilation.GetRequiredSymbol("System.Collections.IEnumerable");
 		public static INamedTypeSymbol Nullable (this Compilation compilation) => compilation.GetRequiredSymbol("System.Nullable`1");
@@ -17,5 +18,8 @@ namespace Albatross.CodeAnalysis.Symbols {
 		public static INamedTypeSymbol JsonConverterClass(this Compilation compilation) => compilation.GetRequiredSymbol("System.Text.Json.Serialization.JsonConverter");
 		public static INamedTypeSymbol JsonConverterAttribute(this Compilation compilation) => compilation.GetRequiredSymbol("System.Text.Json.Serialization.JsonConverterAttribute");
 		public static INamedTypeSymbol JsonStringEnumConverter(this Compilation compilation) => compilation.GetRequiredSymbol("System.Text.Json.Serialization.JsonStringEnumConverter");
+		public static INamedTypeSymbol JsonIgnoreAttribute(this Compilation compilation) => compilation.GetRequiredSymbol("System.Text.Json.Serialization.JsonIgnoreAttribute");
+		
+		public static INamedTypeSymbol TaskGenericDefinition(this Compilation compilation) => compilation.GetRequiredSymbol("System.Threading.Tasks.Task`1");
 	}
 }

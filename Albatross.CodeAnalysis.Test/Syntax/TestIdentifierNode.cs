@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
+using Albatross.Testing;
 using Xunit;
 
 namespace Albatross.CodeAnalysis.Test.Syntax {
@@ -17,7 +18,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 				cs.With(new IdentifierNode(name));
 			}
 			cs.To(new MemberAccessBuilder());
-			Assert.Equal(expected, cs.Build());
+			Assert.Equal(expected.NormalizeLineEnding(), cs.Build().NormalizeLineEnding());
 		}
 	}
 }

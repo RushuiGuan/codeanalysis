@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
+using Albatross.Testing;
 using FluentAssertions;
 using Xunit;
 
@@ -15,7 +16,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 					.Begin(new VariableBuilder("int", "i")).With(new LiteralNode(0)).End()
 				.End()
 				.Build();
-			result.Should().Be(Simple_Expected);
+			result.NormalizeLineEnding().Should().Be(Simple_Expected.NormalizeLineEnding());
 		}
 	}
 }

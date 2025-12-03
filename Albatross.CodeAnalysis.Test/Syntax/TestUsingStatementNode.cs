@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
+using Albatross.Testing;
 using FluentAssertions;
 using Xunit;
 
@@ -13,10 +14,10 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 						.End()
 					.End()
 				.End();
-			codestack.Build().Should().Be(@"using (var test = new object())
+			codestack.Build().NormalizeLineEnding().Should().Be(@"using (var test = new object())
 {
 }
-");
+".NormalizeLineEnding());
 		}
 
 		[Fact]
@@ -25,10 +26,10 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 				.Begin(new UsingStatementBuilder())
 					.Complete(new NewObjectBuilder("object"))
 				.End();
-			codestack.Build().Should().Be(@"using (new object())
+			codestack.Build().NormalizeLineEnding().Should().Be(@"using (new object())
 {
 }
-");
+".NormalizeLineEnding());
 		}
 	}
 }

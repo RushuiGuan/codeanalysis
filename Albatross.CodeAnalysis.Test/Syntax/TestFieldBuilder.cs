@@ -8,7 +8,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 		public void FieldWithoutInitializer() {
 			var codestack = new CodeStack()
 				.Complete(new FieldDeclarationBuilder("int", "test"));
-			codestack.Build().Should().Be("private int test;\r\n");
+			codestack.Build().Should().Be("private int test;\n");
 		}
 
 		[Fact]
@@ -17,7 +17,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 				.Begin(new FieldDeclarationBuilder("int", "test"))
 					.With(new LiteralNode(1))
 				.End();
-			codestack.Build().Should().Be("private int test = 1;\r\n");
+			codestack.Build().Should().Be("private int test = 1;\n");
 		}
 	}
 }

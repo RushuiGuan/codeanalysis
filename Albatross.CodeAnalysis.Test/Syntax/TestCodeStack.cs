@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
+using Albatross.Testing;
 using Xunit;
 
 namespace Albatross.CodeAnalysis.Test.Syntax {
@@ -16,7 +17,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 				cs.Begin(new VariableBuilder("int", "test1")).With(new LiteralNode(1)).End();
 				cs.Begin(new VariableBuilder("int", "test2")).With(new LiteralNode(2)).End();
 			}
-			Assert.Equal(TestScope_Expected, cs.Build());
+			Assert.Equal(TestScope_Expected.NormalizeLineEnding(), cs.Build().NormalizeLineEnding());
 		}
 
 		const string TestEmptyBegin_Expected = @"public string MyMethod()
@@ -36,7 +37,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 					cs.Begin(new VariableBuilder("int", "test3")).With(new LiteralNode(3)).End();
 				}
 			}
-			Assert.Equal(TestEmptyBegin_Expected, cs.Build());
+			Assert.Equal(TestEmptyBegin_Expected.NormalizeLineEnding(), cs.Build().NormalizeLineEnding());
 		}
 		const string TestFeed_Expected = @"public class MyClass
 {
@@ -60,7 +61,7 @@ namespace Albatross.CodeAnalysis.Test.Syntax {
 					cs.To(new MethodDeclarationBuilder("string", "MyMethod").Public());
 				}
 			}
-			Assert.Equal(TestFeed_Expected, cs.Build());
+			Assert.Equal(TestFeed_Expected.NormalizeLineEnding(), cs.Build().NormalizeLineEnding());
 		}
 	}
 }

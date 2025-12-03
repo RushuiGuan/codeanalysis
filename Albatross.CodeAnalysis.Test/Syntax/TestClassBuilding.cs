@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
+using Albatross.Testing;
 using Xunit;
 
 namespace Albatross.CodeAnalysis.Test.Syntax {
@@ -20,7 +21,7 @@ public class MyClass
 		[Fact]
 		public void ClassWithAttribute() {
 			var node = new CodeStack().Begin(new ClassDeclarationBuilder("MyClass").Public()).Begin(new AttributeBuilder("Test")).End().End().Build();
-			Assert.Equal(ClassWithAttribute_Expected, node.ToString());
+			Assert.Equal(ClassWithAttribute_Expected.NormalizeLineEnding(), node.NormalizeLineEnding());
 		}
 		const string ClassWithMultipleAttributes_Expected = @"[Test1]
 [Test2]
@@ -34,7 +35,7 @@ public class MyClass
 				.Begin(new AttributeBuilder("Test1")).End()
 				.Begin(new AttributeBuilder("Test2")).End()
 			.End().Build();
-			Assert.Equal(ClassWithMultipleAttributes_Expected, node.ToString());
+			Assert.Equal(ClassWithMultipleAttributes_Expected.NormalizeLineEnding(), node.NormalizeLineEnding());
 		}
 		const string ClassWithMultipleAttributesOfTheSameType_Expected = @"[Test(1)]
 [Test(2)]
@@ -48,7 +49,7 @@ public class MyClass
 				.Begin(new AttributeBuilder("Test")).Begin(new AttributeArgumentListBuilder()).With(new LiteralNode(1)).End().End()
 				.Begin(new AttributeBuilder("Test")).Begin(new AttributeArgumentListBuilder()).With(new LiteralNode(2)).End().End()
 			.End().Build();
-			Assert.Equal(ClassWithMultipleAttributesOfTheSameType_Expected, node.ToString());
+			Assert.Equal(ClassWithMultipleAttributesOfTheSameType_Expected, node.NormalizeLineEnding());
 		}
 
 		const string ClassWithAttributeAndConstructorArguments_Expected = @"[Test(1, 2, 3)]
@@ -65,7 +66,7 @@ public class MyClass
 					.End()
 				.End()
 			.End().Build();
-			Assert.Equal(ClassWithAttributeAndConstructorArguments_Expected, node.ToString());
+			Assert.Equal(ClassWithAttributeAndConstructorArguments_Expected, node.NormalizeLineEnding());
 		}
 		const string ClassWithAttributeAndAttributeNamedArguments_Expected = @"[Test(1, 2, 3, Name = ""a"")]
 public class MyClass
@@ -84,7 +85,7 @@ public class MyClass
 					.End()
 				.End()
 			.End().Build();
-			Assert.Equal(ClassWithAttributeAndAttributeNamedArguments_Expected, node.ToString());
+			Assert.Equal(ClassWithAttributeAndAttributeNamedArguments_Expected, node.NormalizeLineEnding());
 		}
 
 		const string NamespaceWithUsingDirective_Expected = @"#nullable enable
@@ -110,7 +111,7 @@ namespace test
 					.Begin(new ClassDeclarationBuilder("MyClass").Public()).End()
 					.Begin(new InterfaceDeclarationBuilder("MyInterface").Public()).End()
 				.End().Build();
-			Assert.Equal(NamespaceWithUsingDirective_Expected, node.ToString().Trim());
+			Assert.Equal(NamespaceWithUsingDirective_Expected, node.NormalizeLineEnding().Trim());
 		}
 
 		const string CompilationUnitWithUsingDirective_Expected = @"using System;
@@ -125,7 +126,7 @@ public class MyTest
 					.With(new UsingDirectiveNode("System"))
 					.Begin(new ClassDeclarationBuilder("MyTest").Public()).End()
 				.End().Build();
-			Assert.Equal(CompilationUnitWithUsingDirective_Expected, node.ToString());
+			Assert.Equal(CompilationUnitWithUsingDirective_Expected, node.NormalizeLineEnding());
 		}
 
 		const string ClassWithBaseType_Expected = @"public class Test : MyBase, Interface1, Interface2
@@ -137,7 +138,7 @@ public class MyTest
 			var nod = new CodeStack().Begin(new ClassDeclarationBuilder("Test").Public())
 				.With(new BaseTypeNode("MyBase"), new BaseTypeNode("Interface1"), new BaseTypeNode("Interface2"))
 				.End().Build();
-			Assert.Equal(ClassWithBaseType_Expected, nod.ToString());
+			Assert.Equal(ClassWithBaseType_Expected, nod.NormalizeLineEnding());
 		}
 	}
 }

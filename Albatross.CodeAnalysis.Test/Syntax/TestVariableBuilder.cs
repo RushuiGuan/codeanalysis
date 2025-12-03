@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
+using Albatross.Testing;
 using Xunit;
 
 namespace Albatross.CodeAnalysis.Test {
@@ -26,7 +27,7 @@ namespace Albatross.CodeAnalysis.Test {
 				.Begin(new AssignmentExpressionBuilder("test"))
 					.With(new LiteralNode("a"))
 				.End();
-			Assert.Equal("string[] test\r\ntest = \"a\"", cs.Build().ToString().Trim());
+			Assert.Equal("string[] test\r\ntest = \"a\"".NormalizeLineEnding(), cs.Build().NormalizeLineEnding().Trim());
 		}
 	}
 }

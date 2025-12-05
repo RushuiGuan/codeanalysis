@@ -1,6 +1,7 @@
 # Packages
 Albatross.CodeAnalysis
 Albatross.CodeAnalysis.Polyfill
+Albatross.CodeAnalysis.Testing
 
 # Tests
 Albatross.CodeAnalysis.Test

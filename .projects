@@ -4,4 +4,4 @@ Albatross.CodeAnalysis.Polyfill
 Albatross.CodeAnalysis.Testing
 
 # Tests
-Albatross.CodeAnalysis.Test
+Albatross.CodeAnalysis.UnitTest

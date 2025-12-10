@@ -1,3 +1,4 @@
+#if NETSTANDARD2_0
 namespace System.Runtime.CompilerServices
 {
 	[AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = false)]
@@ -11,3 +12,4 @@ namespace System.Runtime.CompilerServices
 		public string ParameterName { get; }
 	}
 }
+#endif

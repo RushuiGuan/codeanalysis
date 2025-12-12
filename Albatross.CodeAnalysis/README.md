@@ -1,95 +1,191 @@
 # Albatross.CodeAnalysis
 
-A powerful code analysis library that provides intuitive syntax builders and utilities to simplify the creation of Roslyn-based code generators. This library abstracts away the complexity of working directly with Roslyn's syntax trees, making it easier to generate C# code programmatically.
+A powerful code analysis library that provides symbol analysis utilities and extensions to simplify working with Roslyn-based code generators and analyzers. This library helps you analyze types, symbols, and compilation information when building source generators and code analysis tools.
+
+> **Note**: The `Albatross.CodeAnalysis.Syntax` namespace has been deprecated. All classes in that namespace are marked as obsolete and should not be used in new code.
 
 ## Features
 
-- **Syntax Builders**: Fluent API for building C# syntax trees with methods, classes, properties, and more
-- **Code Generation Stack**: `CodeStack` utility for managing nested code structures with automatic scoping
-- **Symbol Analysis Extensions**: Helper methods for analyzing symbol information, including nullability detection and type information
-- **Compilation Utilities**: Extensions for working with `GeneratorExecutionContext` including diagnostics and debug file generation
-- **Type System Helpers**: Predefined constants and utilities for common .NET types and namespaces
+- **Symbol Analysis Extensions**: Comprehensive helper methods for analyzing symbol information
+  - Nullability detection for reference and value types
+  - Collection type analysis and element type extraction
+  - Generic type argument inspection
+  - Type relationship checks (inheritance, interfaces, derived types)
+  - Numeric type detection
+- **Attribute Inspection**: Extensions for working with attribute data on symbols
+- **Symbol Providers**: Convenient access to common framework types (String, DateTime, IEnumerable, etc.)
+- **Compilation Utilities**: Extensions for `GeneratorExecutionContext` including diagnostics and debug file generation
+- **Type Name Helpers**: Get fully qualified names, relative names, and namespace information
+- **Property Analysis**: Extract public properties from types with optional base class traversal
 - **Multi-targeting Support**: Works with both .NET Standard 2.0 and .NET 8.0
 
 ## Example Usage
 
-### Building a Simple Class with Method
+### Analyzing Type Nullability
 
 ```csharp
-using Albatross.CodeAnalysis.Syntax;
+using Albatross.CodeAnalysis.Symbols;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.Text;
-using System.Text;
 
-[Generator]
-public class MyCodeGen : IIncrementalGenerator {
-    public void Initialize(IncrementalGeneratorInitializationContext context) {
-        context.RegisterSourceOutput(
-            context.CompilationProvider,
-            (ctx, compilation) => {
-                var cs = new CodeStack();
-                using (cs.NewScope(new CompilationUnitBuilder())) {
-                    using (cs.NewScope(new NamespaceDeclarationBuilder("MyNamespace"))) {
-                        using (cs.NewScope(new ClassDeclarationBuilder("MyClass").Public())) {
-                            using (cs.NewScope(new MethodDeclarationBuilder("void", "MyMethod").Public())) {
-                                cs.Begin(new VariableBuilder("string", "message"))
-                                  .With(new LiteralNode("Hello World"))
-                                  .End();
-                            }
-                        }
-                    }
-                }
-                ctx.AddSource("MyClass", SourceText.From(cs.Build(), Encoding.UTF8));
-            }
-        );
-    }
+// Check if a type is nullable (reference or value type)
+bool isNullable = typeSymbol.IsNullable(compilation);
+
+// Check specifically for nullable reference types
+bool isNullableRef = typeSymbol.IsNullableReferenceType();
+
+// Check specifically for nullable value types (Nullable<T>)
+bool isNullableValue = typeSymbol.IsNullableValueType(compilation);
+
+// Try to get the underlying value type from Nullable<T>
+if (typeSymbol.TryGetNullableValueType(compilation, out ITypeSymbol? underlyingType)) {
+    Console.WriteLine($"Underlying type: {underlyingType.Name}");
 }
 ```
 
-### Using Symbol Extensions
+### Working with Collection Types
 
 ```csharp
 using Albatross.CodeAnalysis.Symbols;
 
-// Check if a type is nullable
-bool isNullable = typeSymbol.IsNullable(compilation);
+// Check if a type is a collection (but not string)
+bool isCollection = typeSymbol.IsCollection(compilation);
 
-// Get collection element type
-var elementType = typeSymbol.GetCollectionType(compilation);
-
-// Get symbol name with namespace
-string fullName = symbol.GetSymbolName();
+// Get the element type of a collection
+if (typeSymbol.TryGetCollectionElementType(compilation, out ITypeSymbol? elementType)) {
+    Console.WriteLine($"Collection element type: {elementType.Name}");
+}
 ```
 
-### Creating Debug Output
+### Analyzing Generic Types
+
+```csharp
+using Albatross.CodeAnalysis.Symbols;
+
+// Get generic type arguments
+if (typeSymbol.TryGetGenericTypeArguments(compilation.IEnumerableGenericDefinition(), 
+    out ITypeSymbol[] arguments)) {
+    foreach (var arg in arguments) {
+        Console.WriteLine($"Type argument: {arg.Name}");
+    }
+}
+
+// Check if a type is a generic type definition
+bool isGenericDef = namedTypeSymbol.IsGenericTypeDefinition();
+
+// Check if a type is constructed from a generic definition
+bool isConstructed = typeSymbol.IsConstructedFromDefinition(genericDefinition);
+```
+
+### Getting Type Names and Namespaces
+
+```csharp
+using Albatross.CodeAnalysis.Symbols;
+
+// Get fully qualified type name
+string fullName = typeSymbol.GetFullName(); // e.g., "System.Collections.Generic.List<string>"
+
+// Get namespace
+string namespaceName = namespaceSymbol.GetFullNamespace();
+
+// Get type name relative to a namespace
+string relativeName = typeSymbol.GetTypeNameRelativeToNamespace("MyApp.Services");
+```
+
+### Checking Type Relationships
+
+```csharp
+using Albatross.CodeAnalysis.Symbols;
+
+// Check if a type derives from a base class
+bool isDerived = typeSymbol.IsDerivedFrom(baseTypeSymbol);
+
+// Check if a type implements an interface
+bool hasInterface = typeSymbol.HasInterface(interfaceSymbol);
+
+// Check if a type is a concrete class (not abstract, not static, not generic definition)
+bool isConcrete = namedTypeSymbol.IsConcreteClass();
+```
+
+### Working with Attributes
+
+```csharp
+using Albatross.CodeAnalysis.Symbols;
+
+// Check if a symbol has an attribute
+bool hasAttr = symbol.HasAttribute(attributeSymbol);
+
+// Try to get an attribute
+if (symbol.TryGetAttribute(attributeSymbol, out AttributeData? attrData)) {
+    // Try to get a named argument from the attribute
+    if (attrData.TryGetNamedArgument("PropertyName", out TypedConstant value)) {
+        Console.WriteLine($"Attribute property value: {value.Value}");
+    }
+}
+
+// Check if has attribute with specific base type
+bool hasAttrWithBase = symbol.HasAttributeWithBaseType(baseAttributeSymbol);
+```
+
+### Using Symbol Providers
+
+```csharp
+using Albatross.CodeAnalysis.Symbols;
+
+// Get common framework type symbols
+var stringSymbol = compilation.String();
+var dateTimeSymbol = compilation.DateTime();
+var dateOnlySymbol = compilation.DateOnly();
+var enumerableSymbol = compilation.IEnumerable();
+var nullableSymbol = compilation.Nullable();
+
+// Compare symbols
+bool isString = typeSymbol.Is(compilation.String());
+```
+
+### Generator Context Extensions
 
 ```csharp
 using Albatross.CodeAnalysis;
 
-// Generate a debug file during code generation
+// Report custom diagnostics during code generation
+context.CodeGenDiagnostic(DiagnosticSeverity.Warning, "GEN001", "Custom warning message");
+
+// Create a debug file during code generation
 context.CreateGeneratorDebugFile("debug-output.txt", generatedCode);
 
-// Report custom diagnostics
-context.CodeGenDiagnostic(DiagnosticSeverity.Warning, "GEN001", "Custom warning message");
+// Build error message from exception
+string errorMsg = exception.BuildCodeGeneneratorErrorMessage("MyGenerator");
+```
+
+### Analyzing Properties
+
+```csharp
+using Albatross.CodeAnalysis.Symbols;
+
+// Get public properties (with optional base class properties)
+foreach (var property in namedTypeSymbol.GetProperties(useBaseClassProperties: true)) {
+    Console.WriteLine($"Property: {property.Name}, Type: {property.Type.Name}");
+}
+
+// Get distinct properties (avoiding duplicates from inheritance)
+foreach (var property in namedTypeSymbol.GetDistinctProperties(useBaseClassProperties: true)) {
+    Console.WriteLine($"Property: {property.Name}");
+}
 ```
 
 ## Project Structure
 
 ```
 Albatross.CodeAnalysis/
-├── Extensions.cs              # GeneratorExecutionContext extensions
-├── My.cs                      # Constants and utilities for common types/namespaces
-├── Symbols/                   # Symbol analysis utilities
-│   ├── AttributeDataExtensions.cs
-│   ├── Extensions.cs          # Type and symbol analysis extensions
-│   └── SymbolProvider.cs
-└── Syntax/                    # Syntax builders and nodes
-    ├── ClassDeclarationBuilder.cs
-    ├── MethodDeclarationBuilder.cs
-    ├── PropertyNode.cs
-    ├── CodeStack.cs
-    └── ... (many more builders)
+├── Extensions.cs              # GeneratorExecutionContext extensions and utilities
+├── My.cs                      # Constants for common .NET types and namespaces
+└── Symbols/                   # Symbol analysis utilities (primary functionality)
+    ├── AttributeDataExtensions.cs   # Attribute inspection helpers
+    ├── Extensions.cs                # Type and symbol analysis extensions
+    └── SymbolProvider.cs            # Access to common framework types
 ```
+
+**Note**: The `Syntax/` directory contains deprecated syntax builders marked as obsolete.
 
 ## How to Run Unit Tests
 

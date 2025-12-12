@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// <summary>
 	/// Create a <see cref="InterpolationSyntax"/> instance />/>
 	/// </summary>
+	[Obsolete]
 	public class StringInterpolationBuilder : INodeBuilder {
 		private readonly string? format;
 		IdentifierNameSyntax? identifier;

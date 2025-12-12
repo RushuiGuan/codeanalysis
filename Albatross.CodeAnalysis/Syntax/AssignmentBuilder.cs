@@ -16,6 +16,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// this.test.a = 1
 	/// ```
 	/// </summary>
+	[Obsolete]
 	public class AssignmentExpressionBuilder : INodeBuilder {
 		public AssignmentExpressionBuilder() { }
 		public AssignmentExpressionBuilder(string name) : this(new IdentifierNode(name)) { }

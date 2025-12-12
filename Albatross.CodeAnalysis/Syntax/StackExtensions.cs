@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public static class CollectionExtensions {
 		public static Stack<T> PopUntil<T>(this Stack<T> stack, Func<T, bool> predicate, out T last) {
 			last = default!;

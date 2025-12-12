@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class ArrayTypeNode : TypeNode {
 		public ArrayTypeNode(string elementType, int? size = null) : this(new TypeNode(elementType), size) { }
 		public ArrayTypeNode(TypeNode elementType, int? size = null) : base(CreateCollectionType(elementType, size)) { }

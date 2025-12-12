@@ -1,9 +1,11 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class ForEachStatementBuilder : INodeBuilder {
 		private readonly string type;
 		private readonly string name;
@@ -18,6 +20,9 @@ namespace Albatross.CodeAnalysis.Syntax {
 		public SyntaxNode Build(IEnumerable<SyntaxNode> elements) {
 			return SyntaxFactory.ForEachStatement(SyntaxFactory.IdentifierName(type), name, SyntaxFactory.IdentifierName(collection),
 				SyntaxFactory.Block(elements.Select(x => new StatementNode(x).StatementSyntax)));
+		}
+
+		private class ObsoleteAttribute : Attribute {
 		}
 	}
 }

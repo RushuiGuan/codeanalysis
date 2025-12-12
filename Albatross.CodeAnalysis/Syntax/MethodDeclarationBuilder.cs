@@ -11,6 +11,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// * <see cref="ParameterSyntax"/> - zero or more optional parameters for the method parameters
 	/// * <see cref="StatementSyntax"/> - zero or more statements for the method body
 	/// </summary>
+	[Obsolete]
 	public class MethodDeclarationBuilder : INodeBuilder {
 		public MethodDeclarationBuilder(TypeNode returnType, string methodName) {
 			Node = SyntaxFactory.MethodDeclaration(returnType.Type, methodName);

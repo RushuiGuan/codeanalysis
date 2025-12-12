@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class ReturnExpressionBuilder : INodeBuilder {
 		public SyntaxNode Build(IEnumerable<SyntaxNode> elements) {
 			if (elements.FirstOrDefault() is ExpressionSyntax expression) {

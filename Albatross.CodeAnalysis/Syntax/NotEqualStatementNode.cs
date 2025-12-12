@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class NotEqualStatementNode : NodeContainer {
 		public NotEqualStatementNode(INodeContainer left, INodeContainer right) : base(Create(left, right)) {
 		}

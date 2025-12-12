@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// * <see cref="BaseTypeSyntax"/>
 	/// * <see cref="MethodDeclarationSyntax"/>
 	/// </summary>
+	[Obsolete]
 	public class ClassDeclarationBuilder : INodeBuilder {
 		public ClassDeclarationBuilder(string className) {
 			Node = SyntaxFactory.ClassDeclaration(className);

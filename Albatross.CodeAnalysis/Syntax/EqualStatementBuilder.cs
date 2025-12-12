@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class EqualStatementBuilder : INodeBuilder {
 		public SyntaxNode Build(IEnumerable<SyntaxNode> elements) {
 			var error = $"{nameof(EqualStatementBuilder)} expected 2 parameters of type {nameof(ExpressionSyntax)}";

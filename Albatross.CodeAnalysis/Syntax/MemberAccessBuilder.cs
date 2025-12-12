@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class MemberAccessBuilder : INodeBuilder {
 		public SyntaxNode Build(IEnumerable<SyntaxNode> elements) {
 			ExpressionSyntax? expressionSyntax = null;

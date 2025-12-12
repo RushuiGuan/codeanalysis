@@ -1,7 +1,9 @@
 ﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class TypeNode : NodeContainer {
 		const string Var_Text = "var";
 		public TypeNode(string name) : this(SyntaxFactory.ParseTypeName(string.IsNullOrEmpty(name) ? Var_Text : name)) { }

@@ -1,8 +1,10 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class LiteralNode : NodeContainer {
 		public LiteralNode(string? text) : base(GetStringOrNullLiteral(text)) { }
 		static LiteralExpressionSyntax GetStringOrNullLiteral(string? text) {

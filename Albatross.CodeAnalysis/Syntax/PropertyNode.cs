@@ -1,7 +1,9 @@
 ﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class PropertyNode : NodeContainer {
 		public PropertyNode(TypeNode typeNode, string name) : base(SyntaxFactory.PropertyDeclaration(typeNode.Type, name)) { }
 		public PropertyNode(string type, string name) : this(new TypeNode(type), name) { }

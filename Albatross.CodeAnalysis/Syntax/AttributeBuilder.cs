@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,6 +9,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// <summary>
 	/// Create a node of type <see cref="AttributeSyntax"/>.  Expect an optional parameter of type <see cref="AttributeArgumentListSyntax"/>.  
 	/// </summary>
+	[Obsolete]
 	public class AttributeBuilder : INodeBuilder {
 		public AttributeBuilder(string name) {
 			Node = SyntaxFactory.Attribute(SyntaxFactory.IdentifierName(name));

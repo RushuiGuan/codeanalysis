@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class StatementNode : NodeContainer {
 		public StatementNode(SyntaxNode node) : base(Create(node)) { }
 

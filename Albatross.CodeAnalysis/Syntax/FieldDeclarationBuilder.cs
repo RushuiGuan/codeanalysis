@@ -1,9 +1,11 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class FieldDeclarationBuilder : VariableBuilder {
 		public FieldDeclarationBuilder(string type, string name) : base(type, name) {
 			accessibility = SyntaxFactory.Token(SyntaxKind.PrivateKeyword);

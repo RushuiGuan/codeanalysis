@@ -11,6 +11,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// <see cref="InterpolationSyntax"/> and can be created using <see cref="StringInterpolationNode"/> or <see cref="StringInterpolationBuilder"/>
 	/// Accept a mixture of <see cref="ExpressionSyntax"/>, <see cref="LiteralExpressionSyntax"/> and <see cref="InterpolationSyntax"/>
 	/// </summary>
+	[Obsolete]
 	public class InterpolatedStringBuilder : INodeBuilder {
 		public SyntaxNode Build(IEnumerable<SyntaxNode> elements) {
 			var list = new List<InterpolatedStringContentSyntax>();

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public static class Extensions {
 		public static TypeNode AsTypeNode(this ITypeSymbol symbol) {
 			if (symbol is IArrayTypeSymbol arrayType) {

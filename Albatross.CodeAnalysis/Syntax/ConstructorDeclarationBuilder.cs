@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,6 +12,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// * <see cref="ArgumentListSyntax"/> - argument list for the base constructor call
 	/// * <see cref="StatementSyntax"/> - zero or more statements for the constructor body
 	/// </summary>
+	[Obsolete]
 	public class ConstructorDeclarationBuilder : INodeBuilder {
 		public ConstructorDeclarationBuilder(string className) {
 			Node = SyntaxFactory.ConstructorDeclaration(className);

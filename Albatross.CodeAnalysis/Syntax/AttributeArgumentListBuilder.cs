@@ -14,6 +14,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// (1, 2, 3, Name = "a")
 	/// ```
 	/// </summary>
+	[Obsolete]
 	public class AttributeArgumentListBuilder : INodeBuilder {
 		IEnumerable<AttributeArgumentSyntax> Arguments(IEnumerable<SyntaxNode> nodes) {
 			var items = nodes.OfType<ExpressionSyntax>().ToArray();

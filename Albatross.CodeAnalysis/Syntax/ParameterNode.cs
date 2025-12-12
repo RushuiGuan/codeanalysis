@@ -1,8 +1,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class ParameterNode : NodeContainer {
 		public ParameterNode(TypeNode? typeNode, string name) : base(Build(typeNode, name)) { }
 		public ParameterNode(string name) : this(null, name) { }

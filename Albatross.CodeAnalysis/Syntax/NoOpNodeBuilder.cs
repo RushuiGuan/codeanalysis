@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	internal class NoOpNodeBuilder : INodeBuilder {
 		public SyntaxNode Build(IEnumerable<SyntaxNode> elements) {
 			throw new NotSupportedException();

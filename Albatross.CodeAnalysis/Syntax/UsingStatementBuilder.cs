@@ -13,6 +13,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// <see cref="ObjectCreationExpressionSyntax"/> can be used to create a new object without declaring a variable.
 	/// The rest of the parameters are the statements that are executed within the body of the using block.
 	/// </summary>
+	[Obsolete]
 	public class UsingStatementBuilder : INodeBuilder {
 		public SyntaxNode Build(IEnumerable<SyntaxNode> elements) {
 			if (!elements.Any()) {

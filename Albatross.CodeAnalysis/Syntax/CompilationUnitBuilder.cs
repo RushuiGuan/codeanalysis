@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class CompilationUnitBuilder : INodeBuilder {
 		public CompilationUnitBuilder() {
 			Node = SyntaxFactory.CompilationUnit();

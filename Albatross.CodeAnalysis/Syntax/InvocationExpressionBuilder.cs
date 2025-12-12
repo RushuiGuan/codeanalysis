@@ -12,6 +12,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// method.  The last node in the method name can also be passed in directly from the constructor.  The ArgumentListSyntax is used
 	/// to construct the arguments to the method.  
 	/// </summary>
+	[Obsolete]
 	public class InvocationExpressionBuilder : INodeBuilder {
 		IdentifierNameSyntax? identifier;
 		bool await;

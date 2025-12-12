@@ -10,6 +10,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// Create a syntax node of <see cref="VariableDeclarationSyntax"/>.  It requires one parameter of type <see cref="ExpressionSyntax"/>.
 	/// If the variable is declare with `var` keyword, it has to be initialized.
 	/// </summary>
+	[Obsolete]
 	public class VariableBuilder : INodeBuilder {
 		public VariableBuilder(TypeNode type, string name) {
 			Node = SyntaxFactory.VariableDeclaration(type.Type);

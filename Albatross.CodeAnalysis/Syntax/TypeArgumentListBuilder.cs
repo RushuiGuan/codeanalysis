@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class TypeArgumentListBuilder : NodeContainer {
 		public TypeArgumentListBuilder(params string[] typeNames) : base(Create(typeNames)) { }
 		static TypeArgumentListSyntax Create(IEnumerable<string> typeNames) {

@@ -1,9 +1,11 @@
 ﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class GenericIdentifierNode : TypeNode {
 		public GenericIdentifierNode(string name, params string[] genericTypes) : this(name, genericTypes.Select(x => new TypeNode(x)).ToArray()) { }
 		public GenericIdentifierNode(string name, params TypeNode[] genericTypes) : base(CreateGenericType(name, genericTypes)) { }

@@ -3,7 +3,6 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
-
 namespace Albatross.CodeAnalysis.Syntax {
 	/// <summary>
 	/// Generate the argument list used by other syntaxes. Uses any number of parameters of type <see cref="ExpressionSyntax"/>.  Parameters are optional.
@@ -11,6 +10,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// (1, 2, 3)
 	/// ```
 	/// </summary>
+	[Obsolete]
 	public class ArgumentListBuilder : INodeBuilder {
 		IEnumerable<ArgumentSyntax> Arguments(IEnumerable<SyntaxNode> nodes) {
 			foreach (var node in nodes) {

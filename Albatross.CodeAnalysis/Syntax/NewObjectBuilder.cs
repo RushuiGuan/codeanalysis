@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,7 @@ namespace Albatross.CodeAnalysis.Syntax {
 	/// the property initializations
 	/// <see cref="AssignmentExpressionSyntax"/> nodes can be created using <see cref="AssignmentExpressionBuilder"/> builder.
 	/// </summary>
+	[Obsolete]
 	public class NewObjectBuilder : INodeBuilder {
 		private NewObjectBuilder(TypeSyntax typeSyntax) {
 			Node = SyntaxFactory.ObjectCreationExpression(typeSyntax);

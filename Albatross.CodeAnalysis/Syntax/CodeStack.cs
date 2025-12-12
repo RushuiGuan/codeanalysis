@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Albatross.CodeAnalysis.Syntax {
+	[Obsolete]
 	public class CodeStack {
 		public class Scope : IDisposable {
 			readonly CodeStack parent;

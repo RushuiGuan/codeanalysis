@@ -7,6 +7,7 @@ Albatross.CodeAnalysis.Testing
 Your task is to add or improve **XML documentation comments** for all symbols with public or protected accessibility.  Exclude class constructors with no parameters.
 
 Requirements:
+- Skip all symbols for any class marked with `Obsolete` attribute.
 - Generate **triple-slash `///` XML documentation**.
 - Each summary should be concise but descriptive of the purpose.
 - Use <summary>, <param>, <returns>, and <remarks> tags appropriately.

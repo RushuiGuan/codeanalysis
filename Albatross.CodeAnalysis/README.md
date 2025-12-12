@@ -2,7 +2,7 @@
 
 A powerful code analysis library that provides symbol analysis utilities and extensions to simplify working with Roslyn-based code generators and analyzers. This library helps you analyze types, symbols, and compilation information when building source generators and code analysis tools.
 
-> **Note**: The `Albatross.CodeAnalysis.Syntax` namespace has been deprecated. All classes in that namespace are marked as obsolete and should not be used in new code.
+> **Note**: The `Albatross.CodeAnalysis.Syntax` namespace has been deprecated. Use [Albatross.CodeGen.CSharp](https://www.nuget.org/packages/Albatross.CodeGen.CSharp) to help with csharp code generation.
 
 ## Features
 

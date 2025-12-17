@@ -12,7 +12,7 @@
 		<NoWarn>1701;1702;0612</NoWarn>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.Testing" Version="8.0.0-12.main" />
+		<PackageReference Include="Albatross.Testing" Version="8.0.1-19.main" />
 		<PackageReference Include="FluentAssertions" Version="8.8.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
 		<PackageReference Include="Moq" Version="4.20.72" />

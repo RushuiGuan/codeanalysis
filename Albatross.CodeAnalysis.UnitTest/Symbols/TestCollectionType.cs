@@ -1,5 +1,4 @@
-﻿using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeAnalysis.Testing;
+﻿using Albatross.CodeAnalysis.Testing;
 using Microsoft.CodeAnalysis;
 using Xunit;
 

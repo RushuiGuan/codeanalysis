@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace Albatross.CodeAnalysis.Symbols {
+namespace Albatross.CodeAnalysis {
 	/// <summary>
 	/// Provides extension methods to retrieve commonly used type symbols from a Roslyn compilation.
 	/// These helpers simplify accessing framework types during code analysis and generation.

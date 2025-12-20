@@ -1,9 +1,6 @@
-﻿using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeAnalysis.Syntax;
-using Albatross.CodeAnalysis.Testing;
+﻿using Albatross.CodeAnalysis.Testing;
 using FluentAssertions;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Xunit;
 
 namespace Albatross.CodeAnalysis.UnitTest.Symbols {
@@ -99,24 +96,6 @@ public string? Text{ get; set; }
 			valueType!.GetFullName().Should().Be("System.Int32");
 
 			number3Property.Type.TryGetNullableValueType(compilation, out valueType).Should().BeFalse();
-		}
-
-		[Theory]
-		[InlineData("int", "System.Int32")]
-		[InlineData("int?", "System.Nullable<System.Int32>")]
-		[InlineData("string?", "System.String?")]
-		[InlineData("string", "System.String")]
-		[InlineData("int[]", "System.Int32[]")]
-		[InlineData("int?[]", "System.Nullable<System.Int32>[]")]
-		[InlineData("string[]", "System.String[]")]
-		[InlineData("string?[]", "System.String? []")]
-		public async Task TypeSymbol2TypeNodeConversion(string typeName, string expectedResult) {
-			var code = @"class A { [Type] Field; }".Replace("[Type]", typeName);
-			var compilation = await code.CreateNet8CompilationAsync();
-			var classType = compilation.GetRequiredSymbol("A");
-			var type = classType.GetMembers("Field").First().As<IFieldSymbol>().Type;
-			var result = type.AsTypeNode();
-			result.Node.NormalizeWhitespace().ToFullString().Should().Be(expectedResult);
 		}
 
 		[Fact]

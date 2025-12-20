@@ -1,10 +1,9 @@
 ﻿using Microsoft.CodeAnalysis;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Albatross.CodeAnalysis.Symbols {
+namespace Albatross.CodeAnalysis {
 	/// <summary>
 	/// Provides extension methods for working with attributes on Roslyn symbols.
 	/// </summary>

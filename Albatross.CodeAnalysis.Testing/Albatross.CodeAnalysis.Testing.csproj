@@ -5,8 +5,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <Description>A testing utility library designed to simplify the creation of unit tests for Roslyn-based code analyzers, code generators, and source generators. This library provides convenient extension methods to create compilations with proper framework references for testing purposes.</Description>
-        <PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeAnalysis.Testing</PackageProjectUrl>
+		<Description>A testing utility library designed to simplify the creation of unit tests for Roslyn-based code analyzers, code generators, and source generators. This library provides convenient extension methods to create compilations with proper framework references for testing purposes.</Description>
+		<PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeAnalysis.Testing</PackageProjectUrl>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzer.Testing" Version="1.1.2" />

@@ -86,41 +86,6 @@ var config = new Configuration {
 };
 ```
 
-## Project Structure
-
-```
-Albatross.CodeAnalysis.Polyfill/
-├── CallerArgumentExpressionAttribute.cs
-├── RequiredMemberAttribute.cs
-├── IsExternalInit.cs
-├── NotNullAttribute.cs
-└── HashCode.cs
-```
-
-All polyfill files are conditionally compiled using `#if NETSTANDARD2_0` directives to ensure they only compile when targeting .NET Standard 2.0.
-
-## How to Run Unit Tests
-
-This library includes tests in the `Polyfill.Test` project.
-
-### Prerequisites
-- .NET 8.0 SDK or later
-
-### Running Tests
-
-From the repository root:
-
-```bash
-# Run all tests
-dotnet test
-
-# Run polyfill tests specifically
-dotnet test Polyfill.Test/Polyfill.Test.csproj
-
-# Run tests with detailed output
-dotnet test Polyfill.Test/Polyfill.Test.csproj --logger "console;verbosity=detailed"
-```
-
 ## Best Practices
 
 1. **Always Multi-Target**: Include both `netstandard2.0` and a modern target like `net8.0` in your project. The modern compiler will verify that your polyfilled code is correct and compatible.

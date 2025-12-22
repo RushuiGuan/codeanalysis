@@ -141,58 +141,10 @@ public class CodeGeneratorTests {
 }
 ```
 
-## Project Structure
-
-```
-Albatross.CodeAnalysis.Testing/
-├── Extensions.cs              # Main extension methods for creating test compilations
-└── Albatross.CodeAnalysis.Testing.csproj
-```
-
-## How to Run Unit Tests
-
-This library is used by test projects throughout the repository, particularly in `Albatross.CodeAnalysis.UnitTest`.
-
-### Prerequisites
-- .NET 8.0 SDK or later
-
-### Running Tests
-
-From the repository root:
-
-```bash
-# Run all tests (which use this library)
-dotnet test
-
-# Run specific test project that uses this library
-dotnet test Albatross.CodeAnalysis.UnitTest/Albatross.CodeAnalysis.UnitTest.csproj
-
-# Run tests with detailed output
-dotnet test --logger "console;verbosity=detailed"
-```
-
 ### Example Test Projects Using This Library
 
 - **Albatross.CodeAnalysis.UnitTest**: Tests for the main code analysis library
 - **Polyfill.Test**: Tests for the polyfill library
-
-## API Reference
-
-### CreateNet8CompilationAsync Extension Method
-
-```csharp
-public static async Task<CSharpCompilation> CreateNet8CompilationAsync(
-    this string source,
-    string assemblyName = "Net8TestAssembly",
-    CancellationToken cancellationToken = default)
-```
-
-**Parameters:**
-- `source`: The C# source code to compile
-- `assemblyName`: The name of the assembly (default: "Net8TestAssembly")
-- `cancellationToken`: Optional cancellation token
-
-**Returns:** A `CSharpCompilation` configured with .NET 8.0 references and C# 12 language version.
 
 ## Installation
 
@@ -211,18 +163,11 @@ Or add it to your test project's `.csproj` file:
 ```
 
 ## Dependencies
-
 - Microsoft.CodeAnalysis.Analyzer.Testing (1.1.2)
 - Microsoft.CodeAnalysis.Common (5.0.0)
 - Microsoft.CodeAnalysis.CSharp (5.0.0)
 - Microsoft.CodeAnalysis.Workspaces.Common (5.0.0)
 
-## Recommended Testing Packages
-
-This library works great with:
-- **xUnit** or **NUnit**: For test framework
-- **FluentAssertions**: For expressive assertions
-- **Microsoft.CodeAnalysis.CSharp.SourceGenerators.Testing**: For comprehensive source generator testing
 
 ## License
 

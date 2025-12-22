@@ -6,7 +6,6 @@
 		<Nullable>enable</Nullable>
 		<Description>A code analysis library that provides syntax builders so that it is easier to create code generators using rosyln</Description>
 		<PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeAnalysis</PackageProjectUrl>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Humanizer.Core" Version="2.14.1" />

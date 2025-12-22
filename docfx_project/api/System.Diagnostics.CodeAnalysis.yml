@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Diagnostics.CodeAnalysis
+  commentId: N:System.Diagnostics.CodeAnalysis
+  id: System.Diagnostics.CodeAnalysis
+  children:
+  - System.Diagnostics.CodeAnalysis.AllowNullAttribute
+  - System.Diagnostics.CodeAnalysis.DisallowNullAttribute
+  - System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute
+  - System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute
+  - System.Diagnostics.CodeAnalysis.MaybeNullAttribute
+  - System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute
+  - System.Diagnostics.CodeAnalysis.MemberNotNullAttribute
+  - System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute
+  - System.Diagnostics.CodeAnalysis.NotNullAttribute
+  - System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute
+  - System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
+  - System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute
+  langs:
+  - csharp
+  - vb
+  name: System.Diagnostics.CodeAnalysis
+  nameWithType: System.Diagnostics.CodeAnalysis
+  fullName: System.Diagnostics.CodeAnalysis
+  type: Namespace
+  assemblies:
+  - Albatross.CodeAnalysis.Polyfill
+references:
+- uid: System.Diagnostics.CodeAnalysis.AllowNullAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.AllowNullAttribute
+  href: System.Diagnostics.CodeAnalysis.AllowNullAttribute.html
+  name: AllowNullAttribute
+  nameWithType: AllowNullAttribute
+  fullName: System.Diagnostics.CodeAnalysis.AllowNullAttribute
+- uid: System.Diagnostics.CodeAnalysis.DisallowNullAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.DisallowNullAttribute
+  href: System.Diagnostics.CodeAnalysis.DisallowNullAttribute.html
+  name: DisallowNullAttribute
+  nameWithType: DisallowNullAttribute
+  fullName: System.Diagnostics.CodeAnalysis.DisallowNullAttribute
+- uid: System.Diagnostics.CodeAnalysis.MaybeNullAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute
+  href: System.Diagnostics.CodeAnalysis.MaybeNullAttribute.html
+  name: MaybeNullAttribute
+  nameWithType: MaybeNullAttribute
+  fullName: System.Diagnostics.CodeAnalysis.MaybeNullAttribute
+- uid: System.Diagnostics.CodeAnalysis.NotNullAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.NotNullAttribute
+  href: System.Diagnostics.CodeAnalysis.NotNullAttribute.html
+  name: NotNullAttribute
+  nameWithType: NotNullAttribute
+  fullName: System.Diagnostics.CodeAnalysis.NotNullAttribute
+- uid: System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute
+  href: System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.html
+  name: MaybeNullWhenAttribute
+  nameWithType: MaybeNullWhenAttribute
+  fullName: System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute
+- uid: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
+  parent: System.Diagnostics.CodeAnalysis
+  href: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.html
+  name: NotNullWhenAttribute
+  nameWithType: NotNullWhenAttribute
+  fullName: System.Diagnostics.CodeAnalysis.NotNullWhenAttribute
+- uid: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute
+  href: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.html
+  name: NotNullIfNotNullAttribute
+  nameWithType: NotNullIfNotNullAttribute
+  fullName: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute
+- uid: System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute
+  href: System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute.html
+  name: DoesNotReturnAttribute
+  nameWithType: DoesNotReturnAttribute
+  fullName: System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute
+- uid: System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute
+  href: System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.html
+  name: DoesNotReturnIfAttribute
+  nameWithType: DoesNotReturnIfAttribute
+  fullName: System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute
+- uid: System.Diagnostics.CodeAnalysis.MemberNotNullAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute
+  href: System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.html
+  name: MemberNotNullAttribute
+  nameWithType: MemberNotNullAttribute
+  fullName: System.Diagnostics.CodeAnalysis.MemberNotNullAttribute
+- uid: System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute
+  href: System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.html
+  name: MemberNotNullWhenAttribute
+  nameWithType: MemberNotNullWhenAttribute
+  fullName: System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute
+- uid: System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute
+  commentId: T:System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute
+  href: System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute.html
+  name: SetsRequiredMembersAttribute
+  nameWithType: SetsRequiredMembersAttribute
+  fullName: System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute
+- uid: System.Diagnostics.CodeAnalysis
+  commentId: N:System.Diagnostics.CodeAnalysis
+  href: System.html
+  name: System.Diagnostics.CodeAnalysis
+  nameWithType: System.Diagnostics.CodeAnalysis
+  fullName: System.Diagnostics.CodeAnalysis
+  spec.csharp:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Diagnostics
+    name: Diagnostics
+    href: System.Diagnostics.html
+  - name: .
+  - uid: System.Diagnostics.CodeAnalysis
+    name: CodeAnalysis
+    href: System.Diagnostics.CodeAnalysis.html
+  spec.vb:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Diagnostics
+    name: Diagnostics
+    href: System.Diagnostics.html
+  - name: .
+  - uid: System.Diagnostics.CodeAnalysis
+    name: CodeAnalysis
+    href: System.Diagnostics.CodeAnalysis.html

@@ -2,7 +2,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<Description>A polyfill library that provides modern C# language features and attributes for .NET Standard 2.0 projects. This allows you to use newer C# language features while maintaining compatibility with older frameworks.</Description>
 		<PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeAnalysis.Polyfill</PackageProjectUrl>
 	</PropertyGroup>

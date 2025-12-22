@@ -1,0 +1,1162 @@
+### YamlMime:ManagedReference
+items:
+- uid: Albatross.CodeAnalysis.SymbolProvider
+  commentId: T:Albatross.CodeAnalysis.SymbolProvider
+  id: SymbolProvider
+  parent: Albatross.CodeAnalysis
+  children:
+  - Albatross.CodeAnalysis.SymbolProvider.Byte(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.DateOnly(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.DateTime(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.DateTimeOffset(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.IAsyncEnumerable(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.IEnumerable(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.IEnumerableGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.JsonConverterAttribute(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.JsonConverterClass(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.JsonIgnoreAttribute(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.JsonStringEnumConverter(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.Nullable(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.Object(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.String(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.TaskGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  - Albatross.CodeAnalysis.SymbolProvider.TimeOnly(Microsoft.CodeAnalysis.Compilation)
+  langs:
+  - csharp
+  - vb
+  name: SymbolProvider
+  nameWithType: SymbolProvider
+  fullName: Albatross.CodeAnalysis.SymbolProvider
+  type: Class
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: SymbolProvider
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 7
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: >-
+    Provides extension methods to retrieve commonly used type symbols from a Roslyn compilation.
+
+    These helpers simplify accessing framework types during code analysis and generation.
+  example: []
+  syntax:
+    content: public static class SymbolProvider
+    content.vb: Public Module SymbolProvider
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Albatross.CodeAnalysis.SymbolProvider.String(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.String(Microsoft.CodeAnalysis.Compilation)
+  id: String(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: String(Compilation)
+  nameWithType: SymbolProvider.String(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.String(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: String
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 13
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the <xref href="System.String" data-throw-if-not-resolved="false"></xref> type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol String(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.String.
+    content.vb: Public Shared Function [String](compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.String*
+- uid: Albatross.CodeAnalysis.SymbolProvider.DateTime(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.DateTime(Microsoft.CodeAnalysis.Compilation)
+  id: DateTime(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: DateTime(Compilation)
+  nameWithType: SymbolProvider.DateTime(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.DateTime(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: DateTime
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 20
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the <xref href="System.DateTime" data-throw-if-not-resolved="false"></xref> type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol DateTime(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.DateTime.
+    content.vb: Public Shared Function DateTime(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.DateTime*
+- uid: Albatross.CodeAnalysis.SymbolProvider.DateOnly(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.DateOnly(Microsoft.CodeAnalysis.Compilation)
+  id: DateOnly(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: DateOnly(Compilation)
+  nameWithType: SymbolProvider.DateOnly(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.DateOnly(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: DateOnly
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 27
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the System.DateOnly type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol DateOnly(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.DateOnly.
+    content.vb: Public Shared Function DateOnly(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.DateOnly*
+- uid: Albatross.CodeAnalysis.SymbolProvider.TimeOnly(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.TimeOnly(Microsoft.CodeAnalysis.Compilation)
+  id: TimeOnly(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: TimeOnly(Compilation)
+  nameWithType: SymbolProvider.TimeOnly(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.TimeOnly(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: TimeOnly
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 34
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the System.TimeOnly type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol TimeOnly(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.TimeOnly.
+    content.vb: Public Shared Function TimeOnly(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.TimeOnly*
+- uid: Albatross.CodeAnalysis.SymbolProvider.DateTimeOffset(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.DateTimeOffset(Microsoft.CodeAnalysis.Compilation)
+  id: DateTimeOffset(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: DateTimeOffset(Compilation)
+  nameWithType: SymbolProvider.DateTimeOffset(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.DateTimeOffset(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: DateTimeOffset
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 41
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the <xref href="System.DateTimeOffset" data-throw-if-not-resolved="false"></xref> type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol DateTimeOffset(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.DateTimeOffset.
+    content.vb: Public Shared Function DateTimeOffset(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.DateTimeOffset*
+- uid: Albatross.CodeAnalysis.SymbolProvider.Object(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.Object(Microsoft.CodeAnalysis.Compilation)
+  id: Object(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: Object(Compilation)
+  nameWithType: SymbolProvider.Object(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.Object(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: Object
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 48
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the <xref href="System.Object" data-throw-if-not-resolved="false"></xref> type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol Object(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Object.
+    content.vb: Public Shared Function [Object](compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.Object*
+- uid: Albatross.CodeAnalysis.SymbolProvider.Byte(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.Byte(Microsoft.CodeAnalysis.Compilation)
+  id: Byte(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: Byte(Compilation)
+  nameWithType: SymbolProvider.Byte(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.Byte(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: Byte
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 55
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the <xref href="System.Byte" data-throw-if-not-resolved="false"></xref> type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol Byte(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Byte.
+    content.vb: Public Shared Function [Byte](compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.Byte*
+- uid: Albatross.CodeAnalysis.SymbolProvider.IEnumerable(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.IEnumerable(Microsoft.CodeAnalysis.Compilation)
+  id: IEnumerable(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: IEnumerable(Compilation)
+  nameWithType: SymbolProvider.IEnumerable(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.IEnumerable(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: IEnumerable
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 62
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the non-generic <xref href="System.Collections.IEnumerable" data-throw-if-not-resolved="false"></xref> type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol IEnumerable(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Collections.IEnumerable.
+    content.vb: Public Shared Function IEnumerable(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.IEnumerable*
+- uid: Albatross.CodeAnalysis.SymbolProvider.Nullable(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.Nullable(Microsoft.CodeAnalysis.Compilation)
+  id: Nullable(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: Nullable(Compilation)
+  nameWithType: SymbolProvider.Nullable(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.Nullable(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: Nullable
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 69
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the generic definition for <xref href="System.Nullable%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol Nullable(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Nullable&lt;T&gt;.
+    content.vb: Public Shared Function Nullable(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.Nullable*
+- uid: Albatross.CodeAnalysis.SymbolProvider.IAsyncEnumerable(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.IAsyncEnumerable(Microsoft.CodeAnalysis.Compilation)
+  id: IAsyncEnumerable(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: IAsyncEnumerable(Compilation)
+  nameWithType: SymbolProvider.IAsyncEnumerable(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.IAsyncEnumerable(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: IAsyncEnumerable
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 76
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the generic definition for System.Collections.Generic.IAsyncEnumerable&lt;T&gt;.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol IAsyncEnumerable(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Collections.Generic.IAsyncEnumerable&lt;T&gt;.
+    content.vb: Public Shared Function IAsyncEnumerable(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.IAsyncEnumerable*
+- uid: Albatross.CodeAnalysis.SymbolProvider.IEnumerableGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.IEnumerableGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  id: IEnumerableGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: IEnumerableGenericDefinition(Compilation)
+  nameWithType: SymbolProvider.IEnumerableGenericDefinition(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.IEnumerableGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: IEnumerableGenericDefinition
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 83
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the generic definition for <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol IEnumerableGenericDefinition(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Collections.Generic.IEnumerable&lt;T&gt;.
+    content.vb: Public Shared Function IEnumerableGenericDefinition(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.IEnumerableGenericDefinition*
+- uid: Albatross.CodeAnalysis.SymbolProvider.JsonConverterClass(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.JsonConverterClass(Microsoft.CodeAnalysis.Compilation)
+  id: JsonConverterClass(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: JsonConverterClass(Compilation)
+  nameWithType: SymbolProvider.JsonConverterClass(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.JsonConverterClass(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: JsonConverterClass
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 90
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the System.Text.Json.Serialization.JsonConverter type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol JsonConverterClass(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Text.Json.Serialization.JsonConverter.
+    content.vb: Public Shared Function JsonConverterClass(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.JsonConverterClass*
+- uid: Albatross.CodeAnalysis.SymbolProvider.JsonConverterAttribute(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.JsonConverterAttribute(Microsoft.CodeAnalysis.Compilation)
+  id: JsonConverterAttribute(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: JsonConverterAttribute(Compilation)
+  nameWithType: SymbolProvider.JsonConverterAttribute(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.JsonConverterAttribute(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: JsonConverterAttribute
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 97
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the System.Text.Json.Serialization.JsonConverterAttribute type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol JsonConverterAttribute(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Text.Json.Serialization.JsonConverterAttribute.
+    content.vb: Public Shared Function JsonConverterAttribute(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.JsonConverterAttribute*
+- uid: Albatross.CodeAnalysis.SymbolProvider.JsonStringEnumConverter(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.JsonStringEnumConverter(Microsoft.CodeAnalysis.Compilation)
+  id: JsonStringEnumConverter(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: JsonStringEnumConverter(Compilation)
+  nameWithType: SymbolProvider.JsonStringEnumConverter(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.JsonStringEnumConverter(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: JsonStringEnumConverter
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 104
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the System.Text.Json.Serialization.JsonStringEnumConverter type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol JsonStringEnumConverter(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Text.Json.Serialization.JsonStringEnumConverter.
+    content.vb: Public Shared Function JsonStringEnumConverter(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.JsonStringEnumConverter*
+- uid: Albatross.CodeAnalysis.SymbolProvider.JsonIgnoreAttribute(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.JsonIgnoreAttribute(Microsoft.CodeAnalysis.Compilation)
+  id: JsonIgnoreAttribute(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: JsonIgnoreAttribute(Compilation)
+  nameWithType: SymbolProvider.JsonIgnoreAttribute(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.JsonIgnoreAttribute(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: JsonIgnoreAttribute
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 111
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the System.Text.Json.Serialization.JsonIgnoreAttribute type symbol.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol JsonIgnoreAttribute(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Text.Json.Serialization.JsonIgnoreAttribute.
+    content.vb: Public Shared Function JsonIgnoreAttribute(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.JsonIgnoreAttribute*
+- uid: Albatross.CodeAnalysis.SymbolProvider.TaskGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  commentId: M:Albatross.CodeAnalysis.SymbolProvider.TaskGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  id: TaskGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  isExtensionMethod: true
+  parent: Albatross.CodeAnalysis.SymbolProvider
+  langs:
+  - csharp
+  - vb
+  name: TaskGenericDefinition(Compilation)
+  nameWithType: SymbolProvider.TaskGenericDefinition(Compilation)
+  fullName: Albatross.CodeAnalysis.SymbolProvider.TaskGenericDefinition(Microsoft.CodeAnalysis.Compilation)
+  type: Method
+  source:
+    remote:
+      path: Albatross.CodeAnalysis/SymbolProvider.cs
+      branch: main
+      repo: https://github.com/RushuiGuan/codeanalysis
+    id: TaskGenericDefinition
+    path: ../Albatross.CodeAnalysis/SymbolProvider.cs
+    startLine: 118
+  assemblies:
+  - Albatross.CodeAnalysis
+  namespace: Albatross.CodeAnalysis
+  summary: Gets the generic definition for <xref href="System.Threading.Tasks.Task%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static INamedTypeSymbol TaskGenericDefinition(this Compilation compilation)
+    parameters:
+    - id: compilation
+      type: Microsoft.CodeAnalysis.Compilation
+      description: The compilation instance.
+    return:
+      type: Microsoft.CodeAnalysis.INamedTypeSymbol
+      description: The type symbol for System.Threading.Tasks.Task&lt;T&gt;.
+    content.vb: Public Shared Function TaskGenericDefinition(compilation As Compilation) As INamedTypeSymbol
+  overload: Albatross.CodeAnalysis.SymbolProvider.TaskGenericDefinition*
+references:
+- uid: Albatross.CodeAnalysis
+  commentId: N:Albatross.CodeAnalysis
+  href: Albatross.html
+  name: Albatross.CodeAnalysis
+  nameWithType: Albatross.CodeAnalysis
+  fullName: Albatross.CodeAnalysis
+  spec.csharp:
+  - uid: Albatross
+    name: Albatross
+    href: Albatross.html
+  - name: .
+  - uid: Albatross.CodeAnalysis
+    name: CodeAnalysis
+    href: Albatross.CodeAnalysis.html
+  spec.vb:
+  - uid: Albatross
+    name: Albatross
+    href: Albatross.html
+  - name: .
+  - uid: Albatross.CodeAnalysis
+    name: CodeAnalysis
+    href: Albatross.CodeAnalysis.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Albatross.CodeAnalysis.SymbolProvider.String*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.String
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_String_Microsoft_CodeAnalysis_Compilation_
+  name: String
+  nameWithType: SymbolProvider.String
+  fullName: Albatross.CodeAnalysis.SymbolProvider.String
+- uid: Microsoft.CodeAnalysis.Compilation
+  commentId: T:Microsoft.CodeAnalysis.Compilation
+  parent: Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.compilation
+  name: Compilation
+  nameWithType: Compilation
+  fullName: Microsoft.CodeAnalysis.Compilation
+- uid: Microsoft.CodeAnalysis.INamedTypeSymbol
+  commentId: T:Microsoft.CodeAnalysis.INamedTypeSymbol
+  parent: Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.inamedtypesymbol
+  name: INamedTypeSymbol
+  nameWithType: INamedTypeSymbol
+  fullName: Microsoft.CodeAnalysis.INamedTypeSymbol
+- uid: Microsoft.CodeAnalysis
+  commentId: N:Microsoft.CodeAnalysis
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.CodeAnalysis
+  nameWithType: Microsoft.CodeAnalysis
+  fullName: Microsoft.CodeAnalysis
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.CodeAnalysis
+    name: CodeAnalysis
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Albatross.CodeAnalysis.SymbolProvider.DateTime*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.DateTime
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_DateTime_Microsoft_CodeAnalysis_Compilation_
+  name: DateTime
+  nameWithType: SymbolProvider.DateTime
+  fullName: Albatross.CodeAnalysis.SymbolProvider.DateTime
+- uid: Albatross.CodeAnalysis.SymbolProvider.DateOnly*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.DateOnly
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_DateOnly_Microsoft_CodeAnalysis_Compilation_
+  name: DateOnly
+  nameWithType: SymbolProvider.DateOnly
+  fullName: Albatross.CodeAnalysis.SymbolProvider.DateOnly
+- uid: Albatross.CodeAnalysis.SymbolProvider.TimeOnly*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.TimeOnly
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_TimeOnly_Microsoft_CodeAnalysis_Compilation_
+  name: TimeOnly
+  nameWithType: SymbolProvider.TimeOnly
+  fullName: Albatross.CodeAnalysis.SymbolProvider.TimeOnly
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: Albatross.CodeAnalysis.SymbolProvider.DateTimeOffset*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.DateTimeOffset
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_DateTimeOffset_Microsoft_CodeAnalysis_Compilation_
+  name: DateTimeOffset
+  nameWithType: SymbolProvider.DateTimeOffset
+  fullName: Albatross.CodeAnalysis.SymbolProvider.DateTimeOffset
+- uid: Albatross.CodeAnalysis.SymbolProvider.Object*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.Object
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_Object_Microsoft_CodeAnalysis_Compilation_
+  name: Object
+  nameWithType: SymbolProvider.Object
+  fullName: Albatross.CodeAnalysis.SymbolProvider.Object
+- uid: System.Byte
+  commentId: T:System.Byte
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Albatross.CodeAnalysis.SymbolProvider.Byte*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.Byte
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_Byte_Microsoft_CodeAnalysis_Compilation_
+  name: Byte
+  nameWithType: SymbolProvider.Byte
+  fullName: Albatross.CodeAnalysis.SymbolProvider.Byte
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: Albatross.CodeAnalysis.SymbolProvider.IEnumerable*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.IEnumerable
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_IEnumerable_Microsoft_CodeAnalysis_Compilation_
+  name: IEnumerable
+  nameWithType: SymbolProvider.IEnumerable
+  fullName: Albatross.CodeAnalysis.SymbolProvider.IEnumerable
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Albatross.CodeAnalysis.SymbolProvider.Nullable*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.Nullable
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_Nullable_Microsoft_CodeAnalysis_Compilation_
+  name: Nullable
+  nameWithType: SymbolProvider.Nullable
+  fullName: Albatross.CodeAnalysis.SymbolProvider.Nullable
+- uid: Albatross.CodeAnalysis.SymbolProvider.IAsyncEnumerable*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.IAsyncEnumerable
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_IAsyncEnumerable_Microsoft_CodeAnalysis_Compilation_
+  name: IAsyncEnumerable
+  nameWithType: SymbolProvider.IAsyncEnumerable
+  fullName: Albatross.CodeAnalysis.SymbolProvider.IAsyncEnumerable
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Albatross.CodeAnalysis.SymbolProvider.IEnumerableGenericDefinition*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.IEnumerableGenericDefinition
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_IEnumerableGenericDefinition_Microsoft_CodeAnalysis_Compilation_
+  name: IEnumerableGenericDefinition
+  nameWithType: SymbolProvider.IEnumerableGenericDefinition
+  fullName: Albatross.CodeAnalysis.SymbolProvider.IEnumerableGenericDefinition
+- uid: Albatross.CodeAnalysis.SymbolProvider.JsonConverterClass*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.JsonConverterClass
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_JsonConverterClass_Microsoft_CodeAnalysis_Compilation_
+  name: JsonConverterClass
+  nameWithType: SymbolProvider.JsonConverterClass
+  fullName: Albatross.CodeAnalysis.SymbolProvider.JsonConverterClass
+- uid: Albatross.CodeAnalysis.SymbolProvider.JsonConverterAttribute*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.JsonConverterAttribute
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_JsonConverterAttribute_Microsoft_CodeAnalysis_Compilation_
+  name: JsonConverterAttribute
+  nameWithType: SymbolProvider.JsonConverterAttribute
+  fullName: Albatross.CodeAnalysis.SymbolProvider.JsonConverterAttribute
+- uid: Albatross.CodeAnalysis.SymbolProvider.JsonStringEnumConverter*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.JsonStringEnumConverter
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_JsonStringEnumConverter_Microsoft_CodeAnalysis_Compilation_
+  name: JsonStringEnumConverter
+  nameWithType: SymbolProvider.JsonStringEnumConverter
+  fullName: Albatross.CodeAnalysis.SymbolProvider.JsonStringEnumConverter
+- uid: Albatross.CodeAnalysis.SymbolProvider.JsonIgnoreAttribute*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.JsonIgnoreAttribute
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_JsonIgnoreAttribute_Microsoft_CodeAnalysis_Compilation_
+  name: JsonIgnoreAttribute
+  nameWithType: SymbolProvider.JsonIgnoreAttribute
+  fullName: Albatross.CodeAnalysis.SymbolProvider.JsonIgnoreAttribute
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Albatross.CodeAnalysis.SymbolProvider.TaskGenericDefinition*
+  commentId: Overload:Albatross.CodeAnalysis.SymbolProvider.TaskGenericDefinition
+  href: Albatross.CodeAnalysis.SymbolProvider.html#Albatross_CodeAnalysis_SymbolProvider_TaskGenericDefinition_Microsoft_CodeAnalysis_Compilation_
+  name: TaskGenericDefinition
+  nameWithType: SymbolProvider.TaskGenericDefinition
+  fullName: Albatross.CodeAnalysis.SymbolProvider.TaskGenericDefinition

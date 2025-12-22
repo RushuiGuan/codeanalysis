@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Albatross.CodeAnalysis.Testing
+  commentId: N:Albatross.CodeAnalysis.Testing
+  id: Albatross.CodeAnalysis.Testing
+  children:
+  - Albatross.CodeAnalysis.Testing.Extensions
+  langs:
+  - csharp
+  - vb
+  name: Albatross.CodeAnalysis.Testing
+  nameWithType: Albatross.CodeAnalysis.Testing
+  fullName: Albatross.CodeAnalysis.Testing
+  type: Namespace
+  assemblies:
+  - Albatross.CodeAnalysis.Testing
+references:
+- uid: Albatross.CodeAnalysis.Testing.Extensions
+  commentId: T:Albatross.CodeAnalysis.Testing.Extensions
+  href: Albatross.CodeAnalysis.Testing.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: Albatross.CodeAnalysis.Testing.Extensions

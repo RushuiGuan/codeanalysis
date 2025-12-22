@@ -1,0 +1,1 @@
+look at the difference between git tag codeanalysis-8.0.1 and codeanalysis-7.7.2 and generate the release note for version 8.0.1.

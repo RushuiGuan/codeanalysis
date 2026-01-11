@@ -48,7 +48,7 @@
     "globalMetadata": {
       "_appName": "Albatross.CodeAnalysis",
       "_appTitle": "Albatross.CodeAnalysis",
-      "_appLogoPath": "./images/logo-transparent.svg",
+      "_appLogoPath": "./images/logo.svg",
       "_appFaviconPath": "./images/favicon.svg",
       "_enableSearch": true,
       "pdf": false,

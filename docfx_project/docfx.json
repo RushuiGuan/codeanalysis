@@ -7,8 +7,8 @@
           "src": "..",
           "files": [
             "Albatross.CodeAnalysis/Albatross.CodeAnalysis.csproj",
-			"Albatross.CodeAnalysis.Polyfill/Albatross.CodeAnalysis.Polyfill.csproj",
-			"Albatross.CodeAnalysis.Testing/Albatross.CodeAnalysis.Testing.csproj"
+            "Albatross.CodeAnalysis.Polyfill/Albatross.CodeAnalysis.Polyfill.csproj",
+            "Albatross.CodeAnalysis.Testing/Albatross.CodeAnalysis.Testing.csproj"
           ]
         }
       ],
@@ -16,6 +16,11 @@
     }
   ],
   "build": {
+    "sitemap": {
+      "baseUrl": "https://rushuiguan.github.io/commandline",
+      "priority": 0.5,
+      "changefreq": "weekly"
+    },
     "content": [
       {
         "files": [
@@ -29,7 +34,9 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "*.html",
+          "robots.txt"
         ]
       }
     ],
@@ -41,9 +48,16 @@
     "globalMetadata": {
       "_appName": "Albatross.CodeAnalysis",
       "_appTitle": "Albatross.CodeAnalysis",
-	  "_appLogoPath":"./images/logo.svg",
+      "_appLogoPath": "./images/logo-transparent.svg",
+      "_appFaviconPath": "./images/favicon.svg",
       "_enableSearch": true,
-      "pdf": false
+      "pdf": false,
+      "_gitContribute": {
+        "repo": "https://github.com/rushuiguan/codeanalysis",
+        "branch": "main",
+        "path": "docfx_project"
+      },
+      "_gitUrlPattern": "github"
     }
   }
 }

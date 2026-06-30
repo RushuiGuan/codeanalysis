@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path=".projects" />
+    <File Path="Directory.Build.props" />
+    <File Path="icon.png" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Albatross.CodeAnalysis.Polyfill/Albatross.CodeAnalysis.Polyfill.csproj" />
+  <Project Path="Albatross.CodeAnalysis.Testing/Albatross.CodeAnalysis.Testing.csproj" />
+  <Project Path="Albatross.CodeAnalysis.UnitTest/Albatross.CodeAnalysis.UnitTest.csproj" />
+  <Project Path="Albatross.CodeAnalysis/Albatross.CodeAnalysis.csproj" />
+  <Project Path="Polyfill.Test/Polyfill.Test.csproj" />
+  <Project Path="Sample.CodeGen.Consumer/Sample.CodeGen.Consumer.csproj" />
+  <Project Path="Sample.CodeGen/Sample.CodeGen.csproj" />
+</Solution>

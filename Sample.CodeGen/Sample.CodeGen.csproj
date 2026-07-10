@@ -13,14 +13,8 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Albatross.CodeAnalysis\Albatross.CodeAnalysis.csproj" PrivateAssets="All" />
-		<PackageReference Include="Humanizer.Core" Version="2.14.1" GeneratePathProperty="true" PrivateAssets="all" />
 	</ItemGroup>
 	<PropertyGroup>
-		<GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
+		<GetTargetPathDependsOn>$(GetTargetPathDependsOn)</GetTargetPathDependsOn>
 	</PropertyGroup>
-	<Target Name="GetDependencyTargetPaths">
-		<ItemGroup>
-			<TargetPathWithTargetPlatformMoniker Include="$(PKGHumanizer_Core)\lib\netstandard2.0\Humanizer.dll" IncludeRuntimeDependency="false" />
-		</ItemGroup>
-	</Target>
 </Project>
